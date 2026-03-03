@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+.container {
+    display: flex;
+    height: 100vh;
+}
+.sidebar {
+    width: 220px;
+    background: #0ea5c6;
+    color: white;
+    padding: 20px;
+}
+.sidebar-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 25px 0;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.2);
+}
+.sidebar-profile img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* foto bulat */
+    object-fit: cover;
+    border: 2px solid white;
+}
+.profile-name {
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+.logo {
+    font-size: 22px;
+}
+.menu {
+    list-style: none;
+    margin-top: 30px;
+}
+.menu-item {
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    color-scheme: #fff;
+}
+.menu-item:hover,
+.menu-item.active {
+    background: rgba(0,0,0,0.35); /* efek bayangan hitam */
+}
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    height: 60px;
+    background: #0ea5c6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.menu-btn {
+    width: 35px;
+    height: 35px;
+    background: #0b5f75;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.menu-item a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+}
+.search {
+    width: 250px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+.logout {
+    background: #0b5f75;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.logout:hover {
+    background: #083f4e;
+}
+.main {
+    flex: 1;
+    background: #0b5f75;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    gap: 20px;
+}
+.card {
+    background: #16b6dd;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+.chart-box {
+    grid-column: span 2;
+    background: #16b6dd;
+    padding: 20px;
+    border-radius: 10px;
+}
+.chart polyline {
+    fill: none;
+    stroke: white;
+    stroke-width: 3;
+}
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+}
+#popupUser:checked ~ .modal {
+    display: block;
+}
+.modal-content {
+    background: white;
+    width: 400px;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    animation: pop 0.3s ease;
+}
+@keyframes pop {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.close {
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+}
+/* MAIN CONTENT */
+.main-content {
+    flex: 1;
+    padding: 25px;
+    background: #f4f9fb;
+}
+
+/* CRUD CONTAINER */
+.crud-container {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* HEADER CRUD */
+.crud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.crud-header h2 {
+    color: #0b5f75;
+}
+
+/* BUTTON ADD */
+.btn-add {
+    background: #0ea5c6;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-add:hover {
+    background: #0b5f75;
+}
+
+/* TABLE */
+.crud-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.crud-table thead {
+    background: #0ea5c6;
+    color: white;
+}
+
+.crud-table th,
+.crud-table td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.crud-table tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: 0.2s;
+}
+
+.crud-table tbody tr:hover {
+    background: #e6f7fc;
+}
+
+/* BUTTON EDIT */
+.btn-edit {
+    background: #f59e0b;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: 0.3s;
+}
+
+.btn-edit:hover {
+    background: #d97706;
+}
+
+/* BUTTON DELETE */
+.btn-delete {
+    background: #ef4444;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-delete:hover {
+    background: #dc2626;
+}
