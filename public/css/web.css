@@ -1,0 +1,347 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* BODY */
+body {
+    background: linear-gradient(135deg, #e8f4f5, #e9f8f8);
+    color: #333;
+}
+
+/* NAVBAR */
+
+.navbar{
+
+display:flex;
+align-items:center;   /* ini yang bikin semua rata */
+justify-content:space-between;
+padding:15px 40px;
+background:#3990a6;
+border-bottom:1px solid #eee;
+
+}
+/* LOGO */
+
+.logo{
+
+font-size:22px;
+font-weight:bold;
+
+}
+
+.logo-box{
+
+border:2px solid black;
+padding:2px 8px;
+margin-right:5px;
+
+}
+
+/* MENU */
+
+.nav-menu{
+
+display:flex;
+gap:25px;
+list-style:none;
+margin:0;
+padding:0;
+
+}
+
+.nav-menu li{
+
+display:flex;
+align-items:center;
+
+}
+
+.nav-menu a{
+
+text-decoration:none;
+color:black;
+font-size:14px;
+
+}
+
+.nav-menu a:hover{
+
+color:#ffffff;
+
+}
+
+
+/* ICON */
+
+.nav-icons{
+
+display:flex;
+align-items:center;
+gap:20px;
+font-size:20px;
+
+}
+
+.nav-icons i{
+
+cursor:pointer;
+
+}
+
+.nav-icons i:hover{
+
+color:#0b5f75;
+
+}
+/* ABOUT SECTION */
+.about-section{
+    padding: 60px 10%;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.about-section h2{
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* garis bawah judul */
+.about-section h2::after{
+    content: "";
+    width: 80px;
+    height: 4px;
+    background: #ff6b6b;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 5px;
+}
+
+.about-content{
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.about-content p{
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+.footer{
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+.footer p{
+    margin: 0;
+    font-size: 14px;
+}
+/* PROFILE MENU */
+
+.profile-menu{
+
+position:relative;
+display:inline-block;
+
+}
+
+/* ICON PROFILE */
+
+.profile-icon{
+
+font-size:22px;
+cursor:pointer;
+
+}
+
+/* DROPDOWN CARD */
+
+.profile-dropdown{
+
+display:none;
+position:absolute;
+right:0;
+top:35px;
+
+background:white;
+width:170px;
+
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+
+overflow:hidden;
+
+}
+
+/* LINK DI DALAM CARD */
+
+.profile-dropdown a{
+
+display:flex;
+align-items:center;
+gap:10px;
+
+padding:12px 15px;
+text-decoration:none;
+color:#333;
+
+font-size:14px;
+
+}
+
+/* HOVER */
+
+.profile-dropdown a:hover{
+
+background:#f5f5f5;
+
+}
+/* AI ICON */
+
+.ai-icon{
+
+font-size:20px;
+cursor:pointer;
+
+}
+
+/* CHATBOX */
+
+.ai-chatbox{
+
+position:fixed;
+
+bottom:30px;
+right:30px;
+
+width:340px;
+height:420px;
+
+background:white;
+
+border-radius:15px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+
+display:none;
+
+flex-direction:column;
+
+overflow:hidden;
+
+z-index:999;
+
+}
+
+/* HEADER */
+
+.ai-header{
+
+background:#0b5f75;
+
+color:white;
+
+padding:12px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+font-weight:bold;
+
+}
+
+/* MESSAGE AREA */
+
+.ai-messages{
+
+flex:1;
+
+padding:15px;
+
+overflow-y:auto;
+
+background:#f6f6f6;
+
+}
+
+/* AI MESSAGE */
+
+.ai-message{
+
+background:white;
+
+padding:10px;
+
+border-radius:10px;
+
+margin-bottom:10px;
+
+max-width:80%;
+
+}
+
+/* USER MESSAGE */
+
+.user-message{
+
+background:#0b5f75;
+
+color:white;
+
+margin-left:auto;
+
+}
+
+/* INPUT */
+
+.ai-input{
+
+display:flex;
+
+border-top:1px solid #ddd;
+
+}
+
+.ai-input input{
+
+flex:1;
+
+border:none;
+
+padding:12px;
+
+outline:none;
+
+}
+
+.ai-input button{
+
+background:#0b5f75;
+
+color:white;
+
+border:none;
+
+padding:0 15px;
+
+cursor:pointer;
+
+}

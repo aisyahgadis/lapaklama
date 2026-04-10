@@ -60,7 +60,6 @@ body {
 .login-btn:hover {
     background: #e8f5e9;
 }
-
 /* CONTAINER */
 .container {
     width: 90%;
@@ -210,4 +209,90 @@ body {
 
 .btn:hover {
     background: #0b5f75;
+}
+/* RECYCLE COLLECTION */
+
+.recycle-collection{
+    text-align:center;
+    padding:80px;
+}
+
+.recycle-collection h2{
+    font-size:32px;
+    color:#0b5f75;
+}
+
+.subtitle{
+    margin-bottom:40px;
+    color:gray;
+}
+
+
+/* SLIDER */
+
+.recycle-slider-container{
+    position:relative;
+}
+
+.recycle-slider{
+    display:flex;
+    gap:40px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    padding:20px;
+}
+
+.recycle-slider::-webkit-scrollbar{
+    display:none;
+}
+
+.recycle-item{
+    width:250px;
+    transition:0.3s;
+}
+
+.recycle-item:hover{
+    transform:scale(1.05);
+}
+
+
+/* BUTTON SLIDER */
+
+.recycle-btn{
+    position:absolute;
+    top:40%;
+    transform:translateY(-50%);
+    border:none;
+    background:#0b5f75;
+    color:white;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.recycle-btn.left{
+    left:0;
+}
+
+.recycle-btn.right{
+    right:0;
+}
+/* SEE MORE BUTTON */
+
+.see-more{
+    margin-top:40px;
+}
+
+.see-more a{
+    border:1px solid #0b5f75;
+    padding:10px 25px;
+    text-decoration:none;
+    color:#0b5f75;
+    border-radius:5px;
+}
+
+.see-more a:hover{
+    background:#0b5f75;
+    color:white;
 }

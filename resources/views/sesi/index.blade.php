@@ -1,13 +1,13 @@
-@extends('layout/aplikasi')
+@extends('layout.CRUD')
 
 @section('content')
-<nav>
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Jual</a></li>
-        <li><a href="#">Daur Ulang</a></li>
-        <li><a href="#">Tentang</a></li>
-        <li><a href="#" class="login-btn">Login</a></li>
+<nav class="navbar">
+    <div class="logo">Lapaklama</div>
+    <ul class="nav-links">
+        <li><a href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('jual') }}">Jual</a></li>
+        <li><a href="{{ route('daurulang') }}">Daur Ulang</a></li>
+        <li><a href="{{ route('login') }}" class="login-btn">Login</a></li>
     </ul>
 </nav>
 <div class="container">
@@ -16,7 +16,7 @@
         <p>Masukkan email dan password untuk masuk ke akun Anda.</p>
     </header>
     <section class="login-form">
-        <form action="/login" method="POST">
+        <form action="/sesi/login" method="POST">
             @csrf
             <div class="form-group">
                 <label for="email">Email:</label>

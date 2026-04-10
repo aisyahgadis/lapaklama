@@ -1,0 +1,190 @@
+    .jual-container{
+
+    max-width:700px;
+
+    margin:50px auto;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:12px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.1);
+
+    }
+
+    .jual-container h1{
+
+    color:#0b5f75;
+
+    margin-bottom:10px;
+
+    }
+
+    .jual-container p{
+
+    color:#666;
+
+    margin-bottom:25px;
+
+    }
+
+    /* FORM */
+
+    .jual-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    }
+    /* PREVIEW CONTAINER */
+
+    .preview-container{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    }
+
+    /* SLIDER */
+
+    .image-preview{
+
+    display:flex;
+
+    overflow-x:auto;
+
+    gap:10px;
+
+    padding:10px;
+
+    scroll-behavior:smooth;
+
+    }
+
+    /* IMAGE */
+
+    .image-preview img{
+
+    width:120px;
+
+    height:120px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+
+    border:2px solid #ddd;
+
+    }
+
+    /* SLIDE BUTTON */
+
+    .slide-btn{
+
+    background:#0b5f75;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 14px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    }
+
+    .slide-btn:hover{
+
+    background:#094c5d;
+
+    }
+        /* FORM GROUP */
+   .form-group{ 
+    display:flex;
+
+    flex-direction:column;
+
+    }
+
+    .form-group label{
+
+    margin-bottom:6px;
+
+    font-weight:500;
+    }
+
+    /* INPUT */
+
+    input, select, textarea{
+
+    padding:10px;
+
+    border:1px solid #ddd;
+
+    border-radius:6px;
+
+    font-size:14px;
+
+    }
+
+    /* UPLOAD BOX */
+
+    .upload-box{
+
+    border:2px dashed #0b5f75;
+
+    padding:30px;
+
+    text-align:center;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    }
+
+    .upload-box input{
+
+    display:block;
+
+    margin:auto;
+
+    margin-bottom:10px;
+
+    }
+
+    /* BUTTON */
+
+    .jual-btn{
+
+    background:#0b5f75;
+
+    color:white;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    }
+
+    .jual-btn:hover{
+
+    background:#094c5d;
+
+    }

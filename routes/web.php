@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,41 +18,49 @@ Route::get('/', function () {
 });
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('admin.dashboard');
 })->name('dashboard');
 
 Route::get('/admin', function () {
-    return view('admin');
+    return view('admin.admin');
 })->name('admin');
 
 Route::get('/user', function () {
-    return view('user');
+    return view('admin.user');
 })->name('user');
 
 Route::get('/product', function () {
-    return view('product');
+    return view('admin.product');
 })->name('product');
 
 Route::get('/activity', function () {
-    return view('activity');
+    return view('admin.activity');
 })->name('activity');
 
 Route::get('/home', function () {
-    return view('home');
+    return view('user.home');
 })->name('home');
 
 Route::get('/jual', function () {
-    return view('jual');
+    return view('user.jual');
 })->name('jual');
 
 Route::get('/baju', function () {
-    return view('baju');
+    return view('user.baju');
 })->name('baju');
 
 Route::get('/daurulang', function () {
-    return view('daurulang');
+    return view('user.daurulang');
 })->name('daurulang');
 
-Route::get('/login', function () {
-    return view('sesi.login');
-})->name('login');
+Route::get('/main', function () {
+    return view('user.main');
+})->name('main');
+
+Route::get('/beli', function () {
+    return view('user.beli');
+})->name('beli');
+
+Route::get('/sesi', [SessionController::class, 'index'])->name('login');
+Route::post('/sesi/login', [SessionController::class, 'login'])->name('login.post');
+Route::get('/sesi/logout', [SessionController::class, 'logout'])->name('logout');
