@@ -61,6 +61,11 @@ Route::get('/beli', function () {
     return view('user.beli');
 })->name('beli');
 
+Route::get('/login', function () {
+    return view('sesi.index');
+})->name('login');
+
+
 Route::get('/sesi', [SessionController::class, 'index'])->name('login');
 Route::post('/sesi/login', [SessionController::class, 'login'])->name('login.post');
 Route::get('/sesi/logout', [SessionController::class, 'logout'])->name('logout');
