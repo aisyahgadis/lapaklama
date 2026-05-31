@@ -25,6 +25,10 @@ Route::get('/admin', function () {
     return view('admin.admin');
 })->name('admin');
 
+Route::get('/recycle-detail', function () {
+    return view('admin.recycle-detail');
+})->name('recycle-detail');
+
 Route::get('/user', function () {
     return view('admin.user');
 })->name('user');
@@ -60,6 +64,18 @@ Route::get('/main', function () {
 Route::get('/beli', function () {
     return view('user.beli');
 })->name('beli');
+
+Route::get('/form', function () {
+    return view('user.form');
+})->name('user.form');
+
+Route::get('/tracking', function () {
+    return view('user.tracking');
+})->name('user.tracking');
+
+Route::get('/success', function () {
+    return view('user.succes');
+})->name('user.succes');
 
 Route::get('/sesi', [SessionController::class, 'index'])->name('login');
 Route::post('/sesi/login', [SessionController::class, 'login'])->name('login.post');

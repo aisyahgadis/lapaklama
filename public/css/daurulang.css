@@ -1,0 +1,252 @@
+/* Variabel Warna Utama */
+:root {
+    --primary-color: #0b5f75;
+    --primary-hover: #084859;
+    --bg-light: #f4f8f9;
+    --text-dark: #2c3e50;
+    --text-muted: #7f8c8d;
+    --white: #ffffff;
+}
+
+/* Global Style untuk Halaman Ini */
+.recycle-page {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    padding-bottom: 50px;
+}
+
+/* Header / Hero Section Premium Version */
+.recycle-hero {
+    position: relative;
+    background: radial-gradient(circle at top right, #14859d, var(--primary-color));
+    color: var(--white);
+    text-align: center;
+    padding: 45px 20px;
+    margin-bottom: 50px;
+    overflow: hidden; /* Menahan elemen dekoratif agar tidak keluar jalur */
+    box-shadow: 0 10px 30px rgba(11, 95, 117, 0.25);
+}
+
+/* Elemen Dekoratif Lingkaran Abstrak (Background) */
+.recycle-hero::before,
+.recycle-hero::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.recycle-hero::before {
+    width: 320px;
+    height: 320px;
+    top: -120px;
+    left: -60px;
+}
+
+.recycle-hero::after {
+    width: 220px;
+    height: 220px;
+    bottom: -60px;
+    right: -40px;
+}
+
+/* Badge Estetik di Atas Judul (Glassmorphism Effect) */
+.hero-badge {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--white);
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: inline-block;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.recycle-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.recycle-hero p {
+    font-size: 1.15rem;
+    opacity: 0.95;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Animasi Masuk (Keyframes) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsif untuk Smartphone */
+@media (max-width: 768px) {
+    .recycle-hero {
+        padding: 60px 15px;
+    }
+    .recycle-hero h1 {
+        font-size: 2.2rem;
+    }
+    .recycle-hero p {
+        font-size: 1rem;
+    }
+}
+/* Container Utama */
+.recycle-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Katalog Grid */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Card Produk */
+.product-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(11, 95, 117, 0.15);
+}
+
+.product-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background-color: #e0e0e0;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-tag {
+    background-color: rgba(11, 95, 117, 0.1);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.product-title {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.product-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* CTA Section (Mencoba Daur Ulang) */
+.cta-recycle-box {
+    background: var(--white);
+    border: 2px dashed var(--primary-color);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+}
+
+.cta-recycle-box h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.cta-recycle-box p {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 25px auto;
+    font-size: 1.05rem;
+}
+
+/* Tombol Aksi */
+.btn-recycle {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 10px rgba(11, 95, 117, 0.3);
+}
+
+.btn-recycle:hover {
+    background-color: var(--primary-hover);
+    color: var(--white);
+    transform: scale(1.02);
+}

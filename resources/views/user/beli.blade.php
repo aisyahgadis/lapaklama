@@ -5,28 +5,22 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/beli.css') }}">
 <script src="{{ asset('js/beli.js') }}"></script>
-<section class="hero-search">
+<!-- Hero Search Section -->
+    <section class="hero-search">
+        <div class="hero-content">
+            <h1>Lapaklama Fashion Centre</h1>
+            <p>Cari baju bekas terbaikmu</p>
 
-    <div class="hero-content">
-
-    <h1>Lapaklama Fashion Centre</h1>
-    <p>Cari baju bekas terbaikmu</p>
-
-        <div class="search-container">
-
-            <i class="bi bi-search search-icon"></i>
-
-            <input 
-            type="text" 
-            class="search-input" 
-            placeholder="Cari baju bekas, jaket vintage dan fashion bekas lainnya..."
-            id="searchInput">
-
+            <div class="search-container">
+                <i class="bi bi-search search-icon"></i>
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    placeholder="Cari baju bekas, jaket vintage dan fashion bekas lainnya..."
+                    id="searchInput">
+            </div>
         </div>
-
-    </div>
-
-</section>
+    </section>
 
 <section class="shop-container">
     <div class="filters">

@@ -1,0 +1,205 @@
+:root {
+    --primary-color: #0b5f75;
+    --primary-hover: #084859;
+    --bg-light: #f8fafc;
+    --border-color: #cbd5e1;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --white: #ffffff;
+    --accent-light: #f0fdfa;
+}
+
+.form-page {
+    background-color: var(--bg-light);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    padding: 60px 20px;
+    min-height: 100vh;
+}
+
+.form-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Progress Tracker */
+.progress-tracker {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.progress-tracker::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--border-color);
+    z-index: 1;
+}
+
+.tracker-step {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    flex: 1;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--border-color);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px auto;
+    font-weight: 600;
+}
+
+.tracker-step.active .step-number {
+    background: var(--primary-color);
+    box-shadow: 0 0 0 5px rgba(11, 95, 117, 0.2);
+}
+
+.tracker-step.active .step-text {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.step-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Form Card */
+.form-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.form-card h2 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.form-card .subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+/* Upload Zone */
+.upload-zone {
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.upload-zone:hover {
+    border-color: var(--primary-color);
+    background: rgba(11, 95, 117, 0.02);
+}
+
+.upload-zone i {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.upload-zone p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.file-input {
+    display: none;
+}
+
+/* Form Control (Dropdown & Textarea) */
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    transition: all 0.2s;
+    box-sizing: border-box;
+    background-color: var(--white);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(11, 95, 117, 0.1);
+}
+
+/* Kotak Live Estimasi Harga & Info */
+.price-estimation-box {
+    background-color: var(--accent-light);
+    border: 1px solid var(--primary-color);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-title {
+    font-size: 0.95rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin: 0;
+}
+
+.price-amount {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Submit Button */
+.btn-submit {
+    background-color: var(--primary-color);
+    color: var(--white);
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: var(--primary-hover);
+}

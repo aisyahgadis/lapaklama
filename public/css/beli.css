@@ -1,91 +1,144 @@
-/* HERO SEARCH */
-
-.hero-search{
-
-background: linear-gradient(135deg,#0b5f75,#20a4b8);
-padding:60px 20px;
-text-align:center;
-color:white;
-
+/* ==========================================================================
+   Hero Search Section (Premium Version)
+   ========================================================================== */
+.hero-search {
+    position: relative;
+    background: radial-gradient(circle at top right, #14859d, #0b5f75);
+    color: #ffffff;
+    text-align: center;
+    padding: 45px 20px;
+    margin-bottom: 50px;
+    overflow: hidden; /* Mengunci elemen lingkaran agar tidak bocor keluar */
+    box-shadow: 0 10px 30px rgba(11, 95, 117, 0.25);
 }
 
-.hero-search h1{
-
-font-size:40px;
-font-weight:bold;
-margin-bottom:10px;
-
+/* Dekorasi Lingkaran Abstrak di Background */
+.hero-search::before,
+.hero-search::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+    pointer-events: none;
 }
 
-.hero-search p{
-
-font-size:18px;
-opacity:0.9;
-
+.hero-search::before {
+    width: 320px;
+    height: 320px;
+    top: -120px;
+    left: -60px;
 }
 
-
-/* SEARCH BOX */
-
-.search-container{
-
-margin-top:40px;
-max-width:700px;
-margin-left:auto;
-margin-right:auto;
-position:relative;
-
+.hero-search::after {
+    width: 220px;
+    height: 220px;
+    bottom: -60px;
+    right: -40px;
 }
 
-.search-input{
-
-width:100%;
-padding:18px 60px;
-border-radius:8px;
-border:none;
-font-size:16px;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-
+/* Wrapper Konten Utama */
+.hero-content {
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1; /* Supaya teks berada di atas lingkaran background */
 }
 
-.search-icon{
-
-position:absolute;
-left:20px;
-top:50%;
-transform:translateY(-50%);
-font-size:20px;
-color:#888;
-
-}
-/* CONTAINER */
-
-.shop-container{
-
-padding:40px;
-
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 12px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* SEARCH */
-
-.shop-search{
-
-margin:20px 0;
-
+.hero-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 35px;
+    font-weight: 400;
+    animation: fadeInUp 1s ease-out forwards;
 }
 
-.shop-search input{
-
-width:100%;
-
-padding:12px;
-
-border-radius:8px;
-
-border:1px solid #ddd;
-
+/* Container Kolom Pencarian (Search Bar) */
+.search-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 6px 15px 6px 22px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1.2s ease-out forwards;
 }
 
+/* Efek Interaktif Saat User Mengklik Kolom Pencarian */
+.search-container:focus-within {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(11, 95, 117, 0.25);
+}
+
+/* Icon Pencarian Bootstrap */
+.search-icon {
+    color: #0b5f75; /* Menyesuaikan tone warna utama */
+    font-size: 1.2rem;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* Input Text Style */
+.search-input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 12px 5px;
+    font-size: 1rem;
+    color: #2c3e50;
+    background: transparent;
+}
+
+.search-input::placeholder {
+    color: #a0aec0;
+    font-weight: 400;
+}
+
+/* Animasi Masuk Smooth (Keyframes) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsif Layar Smartphone/Tablet */
+@media (max-width: 768px) {
+    .hero-search {
+        padding: 45px 15px;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    .search-container {
+        padding: 4px 10px 4px 18px;
+    }
+    .search-input {
+        font-size: 0.9rem;
+        padding: 10px 5px;
+    }
+}
 /* FILTER */
 
 .filters{

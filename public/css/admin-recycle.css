@@ -1,0 +1,141 @@
+:root {
+    --primary-color: #0b5f75;
+    --primary-hover: #084859;
+    --success-color: #2e7d32;
+    --bg-admin: #f1f5f9;
+    --border-color: #e2e8f0;
+    --text-main: #334155;
+    --white: #ffffff;
+}
+
+.admin-page {
+    background-color: var(--bg-admin);
+    font-family: 'Segoe UI', sans-serif;
+    padding: 30px;
+    min-height: 100vh;
+}
+
+/* Header Dashboard */
+.admin-header {
+    margin-bottom: 30px;
+}
+.admin-header h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+/* Layout Utama: Split Screen 2 Kolom */
+.admin-split-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 30px;
+}
+
+/* Card Style Generic */
+.admin-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+/* Kolom Kiri: Detail Request User */
+.user-request-img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.info-label {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.info-value {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Kolom Kanan: Daftar Penjahit */
+.tailor-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tailor-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.2s;
+}
+
+.tailor-item:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(11, 95, 117, 0.02);
+}
+
+.tailor-info h4 {
+    margin: 0 0 5px 0;
+    color: var(--text-main);
+    font-size: 1rem;
+}
+
+.tailor-badge {
+    background-color: rgba(11, 95, 117, 0.1);
+    color: var(--primary-color);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.tailor-status {
+    font-size: 0.8rem;
+    color: #2563eb;
+    margin-top: 5px;
+}
+
+/* Tombol Pilih Penjahit */
+.btn-assign {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-assign:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Responsif Layar Kecil */
+@media (max-width: 992px) {
+    .admin-split-layout {
+        grid-template-columns: 1fr;
+    }
+}
