@@ -1,77 +1,79 @@
-@extends('layout.CRUD')
+@extends('layout.admin')
 @section('title','Detail Daur Ulang')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin-recycle.css') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-<div class="admin-page">
-    
-    <div class="admin-header">
-        <h1><i class="bi bi-scissors me-2"></i> Penugasan Penjahit Daur Ulang</h1>
-        <p class="text-muted">ID Order: #RCY-202605-001</p>
+<div class="persetujuan-container">
+    <div class="total-pending-badge">
+        Menunggu Persetujuan: <strong>2 Penjahit</strong>
+    </div>
+    <div class="header-section">
+        <h1 class="page-title">Persetujuan Penjahit</h1>
+        <p class="page-subtitle">Kelola dan setujui penjahit untuk project yang tersedia.</p>
     </div>
 
-    <div class="admin-split-layout">
-        
-        <div class="admin-card">
-            <h2 class="card-title">Detail Pakaian & Permintaan User</h2>
-            
-            <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=500" alt="Baju User" class="user-request-img">
-            
-            <div class="info-label">Nama Pengirim</div>
-            <div class="info-value">Ahmad Junaedi</div>
+    <div class="table-responsive">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Nama Project</th>
+                    <th>Kategori</th>
+                    <th>Kandidat Penjahit</th>
+                    <th class="text-center">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <p class="project-name">Project Jaket Bomber Custom</p>
+                        <span class="project-deadline">Deadline: 20 Juni 2026</span>
+                    </td>
+                    <td>Pakaian Pria</td>
+                    <td>
+                        <form action="{{ route('admin.persetujuan.pilih') }}" method="POST" id="form-project-1">
+                            @csrf
+                            <input type="hidden" name="project_id" value="1">
+                            <select name="penjahit_id" class="select-penjahit">
+                                <option value="" selected disabled>-- Pilih Penjahit --</option>
+                                <option value="101">Penjahit Ahmad (Rating: 4.8)</option>
+                                <option value="102">Penjahit Siti (Rating: 4.9)</option>
+                                <option value="103">Roni Tailor (Rating: 4.5)</option>
+                            </select>
+                        </form>
+                    </td>
+                    <td class="text-center">
+                        <button type="submit" form="form-project-1" class="btn-setujui">
+                            Setujui
+                        </button>
+                    </td>
+                </tr>
 
-            <div class="info-label">Deskripsi Permintaan Daur Ulang</div>
-            <div class="info-value">
-                "Saya punya celana jeans bekas yang robek di lutut. Saya ingin mendaur ulangnya menjadi tas totebag kecil yang bisa dipakai kuliah, kalau bisa sisakan saku belakang jeans-nya ya..."
-            </div>
-        </div>
-
-        <div class="admin-card">
-            <h2 class="card-title">Rekomendasi Penjahit Spesialis</h2>
-            
-            <div class="tailor-list">
-                <div class="tailor-item">
-                    <div class="tailor-info">
-                        <h4>Pak Joko Setiawan</h4>
-                        <span class="tailor-badge">Spesialis Denim & Jeans</span>
-                        <div class="tailor-status"><i class="bi bi-briefcase-fill me-1"></i> Sedang mengerjakan 2 project</div>
-                    </div>
-                    <form action="#" method="POST">
-                        @csrf
-                        <input type="hidden" name="tailor_id" value="1">
-                        <button type="submit" class="btn-assign">Pilih</button>
-                    </form>
-                </div>
-
-                <div class="tailor-item">
-                    <div class="tailor-info">
-                        <h4>Ibu Sri Wahyuni</h4>
-                        <span class="tailor-badge">Spesialis Kemeja & Kain Perca</span>
-                        <div class="tailor-status"><i class="bi bi-briefcase-fill me-1"></i> Sedang mengerjakan 0 project (Sangat Tersedia)</div>
-                    </div>
-                    <form action="#" method="POST">
-                        @csrf
-                        <input type="hidden" name="tailor_id" value="2">
-                        <button type="submit" class="btn-assign">Pilih</button>
-                    </form>
-                </div>
-
-                <div class="tailor-item">
-                    <div class="tailor-info">
-                        <h4>Mbak Amalia</h4>
-                        <span class="tailor-badge">Spesialis Kaos & Rajut</span>
-                        <div class="tailor-status"><i class="bi bi-briefcase-fill me-1"></i> Sedang mengerjakan 1 project</div>
-                    </div>
-                    <form action="#" method="POST">
-                        @csrf
-                        <input type="hidden" name="tailor_id" value="3">
-                        <button type="submit" class="btn-assign">Pilih</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
+                <tr>
+                    <td>
+                        <p class="project-name">Gaun Pesta Silk</p>
+                        <span class="project-deadline">Deadline: 05 Juli 2026</span>
+                    </td>
+                    <td>Pakaian Wanita</td>
+                    <td>
+                        <form action="{{ route('admin.persetujuan.pilih') }}" method="POST" id="form-project-2">
+                            @csrf
+                            <input type="hidden" name="project_id" value="2">
+                            <select name="penjahit_id" class="select-penjahit">
+                                <option value="" selected disabled>-- Pilih Penjahit --</option>
+                                <option value="104">Batik & Kebaya Indah (Rating: 4.7)</option>
+                                <option value="102">Penjahit Siti (Rating: 4.9)</option>
+                            </select>
+                        </form>
+                    </td>
+                    <td class="text-center">
+                        <button type="submit" form="form-project-2" class="btn-setujui">
+                            Setujui
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 @endsection

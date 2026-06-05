@@ -1,4 +1,20 @@
 /* ==========================================================================
+   Base & Layout
+   ========================================================================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fcfcfc;
+    color: #333;
+    margin: 0;
+}
+
+.shop-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ==========================================================================
    Hero Search Section (Premium Version)
    ========================================================================== */
 .hero-search {
@@ -7,12 +23,11 @@
     color: #ffffff;
     text-align: center;
     padding: 45px 20px;
-    margin-bottom: 50px;
-    overflow: hidden; /* Mengunci elemen lingkaran agar tidak bocor keluar */
+    margin-bottom: 40px;
+    overflow: hidden;
     box-shadow: 0 10px 30px rgba(11, 95, 117, 0.25);
 }
 
-/* Dekorasi Lingkaran Abstrak di Background */
 .hero-search::before,
 .hero-search::after {
     content: '';
@@ -36,12 +51,11 @@
     right: -40px;
 }
 
-/* Wrapper Konten Utama */
 .hero-content {
     max-width: 750px;
     margin: 0 auto;
     position: relative;
-    z-index: 1; /* Supaya teks berada di atas lingkaran background */
+    z-index: 1;
 }
 
 .hero-content h1 {
@@ -61,14 +75,14 @@
     animation: fadeInUp 1s ease-out forwards;
 }
 
-/* Container Kolom Pencarian (Search Bar) */
+/* Container Kolom Pencarian */
 .search-container {
     position: relative;
     max-width: 600px;
     margin: 0 auto;
     background: #ffffff;
-    border-radius: 30px;
-    padding: 6px 15px 6px 22px;
+    border-radius: 35px;
+    padding: 8px 10px 8px 22px;
     display: flex;
     align-items: center;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
@@ -76,22 +90,17 @@
     animation: fadeInUp 1.2s ease-out forwards;
 }
 
-/* Efek Interaktif Saat User Mengklik Kolom Pencarian */
 .search-container:focus-within {
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(11, 95, 117, 0.25);
 }
 
-/* Icon Pencarian Bootstrap */
 .search-icon {
-    color: #0b5f75; /* Menyesuaikan tone warna utama */
+    color: #0b5f75;
     font-size: 1.2rem;
     margin-right: 15px;
-    display: flex;
-    align-items: center;
 }
 
-/* Input Text Style */
 .search-input {
     border: none;
     outline: none;
@@ -104,199 +113,278 @@
 
 .search-input::placeholder {
     color: #a0aec0;
-    font-weight: 400;
 }
 
-/* Animasi Masuk Smooth (Keyframes) */
+.btn-search {
+    background: linear-gradient(135deg, #1b7a8c, #11505c);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-search:hover {
+    box-shadow: 0 4px 15px rgba(27, 122, 140, 0.3);
+    transform: scale(1.05);
+}
+
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsif Layar Smartphone/Tablet */
+/* ==========================================================================
+   Filter Section (Kategori & Harga)
+   ========================================================================== */
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: #ffffff;
+    padding: 15px 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    border: 1px solid #edf2f7;
+}
+
+/* Tombol Dropdown Kategori */
+.custom-select {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 2px solid #1b7a8c;
+    background: transparent;
+    color: #1b7a8c;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    min-width: 180px;
+}
+
+.custom-select:hover, .custom-select:focus {
+    background: #1b7a8c;
+    color: white;
+    box-shadow: 0 4px 10px rgba(27, 122, 140, 0.2);
+}
+
+/* Tombol Harga */
+.price-filter {
+    position: relative;
+}
+
+.price-btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 2px solid #1b7a8c;
+    background: transparent;
+    color: #1b7a8c;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.price-btn:hover {
+    background: #1b7a8c;
+    color: white;
+    box-shadow: 0 4px 10px rgba(27, 122, 140, 0.2);
+}
+
+/* Pop-up Range Harga */
+.price-card {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: none; /* Dijalankan oleh JS togglePriceCard() */
+    width: 260px;
+    z-index: 100;
+    border: 1px solid #edf2f7;
+}
+
+.filter-title {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    margin-top: 0;
+    font-size: 1.05rem;
+}
+
+.price-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.price-inputs input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.price-inputs input:focus {
+    border-color: #1b7a8c;
+}
+
+.btn-apply {
+    width: 100%;
+    background: #0b5f75;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-apply:hover {
+    background: #084c5e;
+}
+
+/* ==========================================================================
+   Product Grid & Cards (Penyesuaian HTML Baru)
+   ========================================================================== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f0f4f8;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.product-img-wrapper {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-img-wrapper img {
+    transform: scale(1.08); /* Efek zoom halus saat di-hover */
+}
+
+.product-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-info h3 {
+    font-size: 1.15rem;
+    color: #2c3e50;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.product-desc {
+    font-size: 0.9rem;
+    color: #718096;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    /* Maksimal 2 baris agar rapi */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1; 
+}
+
+.price-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    border-top: 1px solid #edf2f7;
+    padding-top: 15px;
+}
+
+.price {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #1b7a8c;
+}
+
+/* Tombol Beli di dalam Card */
+.btn-buy {
+    background: linear-gradient(135deg, #1b7a8c, #11505c);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 10px rgba(27, 122, 140, 0.2);
+}
+
+.btn-buy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(27, 122, 140, 0.3);
+}
+
+/* ==========================================================================
+   Responsif (Mobile & Tablet)
+   ========================================================================== */
 @media (max-width: 768px) {
-    .hero-search {
-        padding: 45px 15px;
+    .hero-search { padding: 45px 15px; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .hero-content p { font-size: 1rem; margin-bottom: 25px; }
+    
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
     }
-    .hero-content h1 {
-        font-size: 2.2rem;
+    
+    .custom-select, .price-btn {
+        width: 100%;
+        justify-content: center;
     }
-    .hero-content p {
-        font-size: 1rem;
-        margin-bottom: 25px;
+    
+    .price-card {
+        width: 100%;
+        position: static;
+        margin-top: 10px;
     }
-    .search-container {
-        padding: 4px 10px 4px 18px;
-    }
-    .search-input {
-        font-size: 0.9rem;
-        padding: 10px 5px;
-    }
-}
-/* FILTER */
-
-.filters{
-
-display:flex;
-
-gap:15px;
-
-margin-bottom:20px;
-
-}
-
-.filters select{
-
-padding:10px;
-
-border-radius:6px;
-
-}
-
-/* GRID */
-
-.product-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-
-gap:20px;
-
-}
-
-/* CARD */
-
-.product-card{
-
-background:white;
-
-padding:15px;
-
-border-radius:10px;
-
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-
-cursor:pointer;
-
-transition:0.3s;
-
-}
-
-.product-card:hover{
-
-transform:translateY(-5px);
-
-}
-
-/* IMAGE */
-
-.product-card img{
-
-width:100%;
-
-height:200px;
-
-object-fit:cover;
-
-border-radius:8px;
-
-}
-
-/* TEXT */
-
-.product-card h3{
-
-margin:10px 0 5px;
-
-}
-
-.product-card p{
-
-color:#0b5f75;
-font-weight:bold;
-
-}
-.price-filter{
-
-position:relative;
-
-}
-
-/* BUTTON */
-
-.price-btn{
-
-padding:10px 15px;
-border-radius:6px;
-border:1px solid #ddd;
-background:white;
-cursor:pointer;
-
-}
-
-/* CARD */
-
-.price-card{
-
-position:absolute;
-
-top:45px;
-left:0;
-
-background:white;
-
-padding:15px;
-
-border-radius:10px;
-
-box-shadow:0 5px 20px rgba(0,0,0,0.15);
-
-display:none;
-
-width:200px;
-
-z-index:100;
-
-}
-
-/* INPUT */
-
-.price-card input{
-
-width:100%;
-
-padding:8px;
-
-margin-bottom:10px;
-
-border:1px solid #ddd;
-
-border-radius:6px;
-
-}
-
-/* BUTTON */
-
-.price-card button{
-
-width:100%;
-
-background:#0b5f75;
-color:white;
-
-border:none;
-
-padding:8px;
-
-border-radius:6px;
-
-cursor:pointer;
-
 }

@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
+Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
 
@@ -28,6 +28,7 @@ Route::get('/admin', function () {
 Route::get('/recycle-detail', function () {
     return view('admin.recycle-detail');
 })->name('recycle-detail');
+Route::post('/admin/persetujuan/pilih', [PersetujuanController::class, 'pilihPenjahit'])->name('admin.persetujuan.pilih');
 
 Route::get('/user', function () {
     return view('admin.user');
@@ -37,9 +38,9 @@ Route::get('/product', function () {
     return view('admin.product');
 })->name('product');
 
-Route::get('/activity', function () {
-    return view('admin.activity');
-})->name('activity');
+Route::get('/persetujuan', function () {
+    return view('admin.persetujuan');
+})->name('persetujuan');
 
 Route::get('/home', function () {
     return view('user.home');
@@ -77,6 +78,8 @@ Route::get('/success', function () {
     return view('user.succes');
 })->name('user.succes');
 
+// Menampilkan halaman login
 Route::get('/sesi', [SessionController::class, 'index'])->name('login');
-Route::post('/sesi/login', [SessionController::class, 'login'])->name('login.post');
+// Memproses data login saat form di-submit
+Route::post('/sesi', [SessionController::class, 'store']);
 Route::get('/sesi/logout', [SessionController::class, 'logout'])->name('logout');

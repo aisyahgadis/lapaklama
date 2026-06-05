@@ -146,7 +146,6 @@ input.value="";
     </div>
 
 </nav>
-
 <!-- CONTENT -->
 <div class="content">
 
@@ -155,18 +154,59 @@ input.value="";
     </main>
 
 </div>
-<section class="about-section">
-    <h2>Tentang Lapaklama</h2>
-    <div class="about-content">
-        <p>Lapaklama adalah platform jual beli baju bekas yang memudahkan kamu untuk menjual atau membeli baju bekas berkualitas.</p>
-        <p>Kamu juga bisa mendaur ulang baju lama menjadi fashion baru.</p>
-        <p>Bersama Lapaklama kita membantu mengurangi limbah fashion.</p>
-    </div>
-</section>
 
-<footer class="footer">
-    <p>&copy; 2024 Lapaklama. All rights reserved.</p>
-</footer>
+    <div style="flex-grow: 1;"></div>
+
+    <footer class="lapaklama-footer">
+        <div class="footer-container">
+            
+            <div>
+                <a href="#" class="footer-logo">LapakLama</a>
+                <p class="footer-about">
+                    Jual baju bekasmu atau ubah menjadi fashion baru melalui layanan daur ulang kami. Temukan gaya unik sambil membantu mengurangi limbah fashion.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="footer-heading">Menu Bantuan</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Cara Jual</a></li>
+                    <li><a href="#">Cara Beli</a></li>
+                    <li><a href="#">Layanan Recycle</a></li>
+                    <li><a href="#">Lacak Pesanan</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-heading">Kebijakan</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                    <li><a href="#">Pengembalian Dana</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-heading">Info Terbaru</h4>
+                <p class="footer-about" style="margin-bottom: 10px;">Dapatkan info diskon dan produk daur ulang terbaru dari kami.</p>
+                <form class="subscribe-form" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Email kamu..." class="subscribe-input" required>
+                    <button type="submit" class="subscribe-btn">Kirim</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 LapakLama. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
 
 <script>
 

@@ -1,0 +1,113 @@
+.persetujuan-container {
+    padding: 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2d3748;
+    margin-bottom: 4px;
+}
+.total-pending-badge {
+    display: inline-block;
+    background-color: #fff3cd;
+    color: #856404;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: 1px solid #ffeeba;
+    margin-bottom: 20px;
+}
+
+.total-pending-badge strong {
+    font-weight: 700;
+}
+.page-subtitle {
+    font-size: 14px;
+    color: #718096;
+    margin-bottom: 24px;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-table th {
+    background-color: #f7fafc;
+    color: #4a5568;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 12px 20px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.admin-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #4a5568;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.admin-table tr:hover {
+    background-color: #f8fafc;
+}
+
+.project-name {
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0 0 4px 0;
+}
+
+.project-deadline {
+    font-size: 12px;
+    color: #a0aec0;
+}
+
+.select-penjahit {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e0;
+    background-color: #fff;
+    color: #2d3748;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.select-penjahit:focus {
+    border-color: #4299e1;
+}
+
+.btn-setujui {
+    background-color: #48bb78;
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s;
+}
+
+.btn-setujui:hover {
+    background-color: #38a169;
+}
+
+.text-center {
+    text-align: center;
+}

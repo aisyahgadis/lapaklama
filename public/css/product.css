@@ -1,0 +1,141 @@
+/* ==========================================================================
+   GAYA UTAMA (Disesuaikan dengan tema Slide 2)
+   ========================================================================== */
+
+body {
+    background-color: #f8fafc;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    padding: 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Layout (Judul & Card Sejajar Kiri-Kanan) */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.header-title h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2d3748;
+    margin: 0 0 4px 0;
+}
+
+.header-title p {
+    font-size: 14px;
+    color: #718096;
+    margin: 0;
+}
+
+/* ==========================================================================
+   CARD TOTAL PRODUK
+   ========================================================================== */
+.counter-card {
+    background: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.counter-icon {
+    background-color: #ebf8ff;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.counter-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.counter-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #a0aec0;
+    font-weight: 600;
+}
+
+.counter-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2d3748;
+    line-height: 1.2;
+}
+
+/* ==========================================================================
+   TABEL UTAMA & TOMBOL (Sesuai Class Blade Produk)
+   ========================================================================== */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.custom-table th {
+    background-color: #f7fafc;
+    color: #4a5568;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 12px 24px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.custom-table td {
+    padding: 16px 24px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #4a5568;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.custom-table tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Nama Produk (Tebal) */
+.custom-table td.fw-bold {
+    font-weight: 600;
+    color: #1a202c;
+}
+
+/* Tombol Detail (Hijau mengikuti tema slide 2) */
+.btn-detail {
+    background-color: #48bb78;
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s;
+}
+
+.btn-detail:hover {
+    background-color: #38a169;
+}

@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Lapaklama')</title>
 
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <title>@yield('title')</title>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    @stack('styles')
 </head>
-<body>
 
-    <!-- Navbar Global (kalau mau selalu muncul) -->
-    {{-- Bisa taruh navbar di sini kalau ingin global --}}
+<body class="auth-page">
 
-    <main>
-        @yield('content')
-    </main>
+    @yield('content')
 
-    <footer>
-        <p>&copy; {{ date('Y') }} Lapaklama. All rights reserved.</p>
-    </footer>
+    @stack('scripts')
 
 </body>
 </html>

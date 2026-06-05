@@ -1,84 +1,81 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard Admin</title>
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-</head>
+@extends('layout.admin')
 
-<body>
-<div class="container">
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <h2 class="logo">Lapaklama</h2>
-
-        <div class="sidebar-profile">
-            <img src="{{ asset('img/image.png') }}" alt="Admin">
-            <span class="profile-name">Admin</span>
+@section('title', 'Data Produk')
+@section('content')
+    <link rel="stylesheet" href="{{ asset('css/product.css') }}">
+<div class="container-fluid">
+    
+    <div class="page-header">
+        <div class="header-title">
+            <h2>Manajemen Produk</h2>
+            <p>Kelola produk yang terdaftar di sistem</p>
         </div>
-
-        <ul class="menu">
-            <li class="menu-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-            <li class="menu-item"><a href="{{ route('user') }}">User</a></li>
-            <li class="menu-item active"><a href="{{ route('product') }}">Product</a></li>
-            <li class="menu-item"><a href="{{ route('activity') }}">Activity</a></li>
-        </ul>
-    </aside>
-
-    <!-- CONTENT -->
-    <div class="content">
-
-        <!-- HEADER -->
-        <header class="header">
-            <div class="header-left">
-                <div class="menu-btn">☰</div>
-                <input type="text" class="search" placeholder="Search">
+        
+        <div class="counter-card">
+            <div class="counter-icon"></div>
+            <div class="counter-info">
+                <span class="counter-label">TOTAL PRODUK</span>
+                <span class="counter-value">4</span>
             </div>
-            <button class="logout">Log Out</button>
-        </header>
-
-        <!-- MAIN CONTENT -->
-        <main class="main-content">
-
-            <div class="crud-container">
-                <div class="crud-header">
-                    <h2>Data Product</h2>
-                    <button class="btn-add">+ Tambah Product</button>
-                </div>
-
-                <table class="crud-table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama Produk</th>
-                            <th>Harga</th>
-                            <th>Gambar</th>
-                            <th>Deskripsi</th>
-                            <th>Kategori</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </main>
-
+        </div>
     </div>
+
+    <div class="table-container">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th style="width: 8%;">NO</th>
+                    <th style="width: 25%;">NAMA PRODUK</th>
+                    <th style="width: 20%;">KATEGORI</th>
+                    <th style="width: 18%;">HARGA</th>
+                    <th style="width: 14%;">STOK</th>
+                    <th style="width: 15%;">AKSI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="fw-bold">Laptop ASUS ROG</td>
+                    <td>Elektronik</td>
+                    <td>Rp 18.500.000</td>
+                    <td>12 Pcs</td>
+                    <td>
+                        <button class="btn-detail">Detail</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="fw-bold">Smartphone Samsung S24</td>
+                    <td>Elektronik</td>
+                    <td>Rp 15.200.000</td>
+                    <td>8 Pcs</td>
+                    <td>
+                        <button class="btn-detail">Detail</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="fw-bold">Meja Kerja Minimalis</td>
+                    <td>Furnitur</td>
+                    <td>Rp 850.000</td>
+                    <td>25 Pcs</td>
+                    <td>
+                        <button class="btn-detail">Detail</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="fw-bold">Kemeja Flanel Premium</td>
+                    <td>Pakaian</td>
+                    <td>Rp 249.000</td>
+                    <td>50 Pcs</td>
+                    <td>
+                        <button class="btn-detail">Detail</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>
-</body>
-</html>
+@endsection
