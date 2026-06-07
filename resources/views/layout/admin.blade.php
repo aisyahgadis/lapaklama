@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>@yield('title') - Lapaklama</title>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin-panel.css') }}">
 </head>
 <body>
         <div class="admin-container">

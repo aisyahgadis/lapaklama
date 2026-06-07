@@ -1,4 +1,4 @@
-@extends('layout.web')
+@extends('layout.user')
 @section('title', 'Lapaklama - Home')
 
 @section('content')
@@ -180,13 +180,6 @@
 <section class="action-section">
     <h2 class="action-title">Ayo Coba Lapaklama Sekarang!</h2>
     <div class="action-grid">
-        <div class="action-card">
-            <div class="icon-box">🏷️</div>
-            <h3>Jual Baju Bekasmu</h3>
-            <p>Ubah baju bekasmu menjadi uang dengan mudah di Lapaklama. Cukup daftar, unggah foto, dan jual!</p>
-            <a href="{{ route('jual') }}" class="btn btn-primary btn-full">Jual Sekarang</a>
-        </div>
-        
         <div class="action-card">
             <div class="icon-box">🛍️</div>
             <h3>Beli Baju Berkualitas</h3>

@@ -1,0 +1,111 @@
+/* payment.css */
+.payment-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.payment-header {
+    border-bottom: 2px dashed #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.payment-header h2 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.payment-header p {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.payment-amount {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 20px 0;
+}
+
+.va-box {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.va-title {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.va-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #27ae60;
+    letter-spacing: 2px;
+}
+
+.instruction-box {
+    text-align: left;
+    background: #fdfdfd;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.instruction-box h4 {
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.instruction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.instruction-list li {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.instruction-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.btn-confirm {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-confirm:hover {
+    background-color: #219653;
+}

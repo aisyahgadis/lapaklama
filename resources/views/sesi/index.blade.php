@@ -1,155 +1,91 @@
 @extends('layout.CRUD')
-@section('title', 'Login')
+
+@push('styles')
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}?v={{ time() }}">
+@endpush
+
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-<div class="auth-wrapper">
-
-    <div class="auth-card">
-
-        <!-- KIRI -->
-        <div class="auth-left">
-
-            <div class="left-content">
-
-                <span class="small-text">
-                    SIGN IN
-                </span>
-
-                <h1>Lapak Lama</h1>
-
-                <p>
-                    Tempat Terbaik Menemukan Barang Klasik &
-                    Otentik
-                </p>
-
+<div class="container min-vh-100 d-flex align-items-center justify-content-center py-5">
+    <div class="row login-container w-100 m-0">
+        
+        <div class="col-lg-6 login-form-section">
+            <div class="brand-logo mb-5">
+                <i class="bi bi-shop-window"></i>Lapaklama
             </div>
 
-            <div class="middle-button">
-                <button>
-                    MASUK
-                </button>
-            </div>
-        </div>
+            <h2 class="fw-bold mb-2 text-dark">Selamat Datang Kembali!</h2>
+            <p class="text-muted mb-4">Silakan masuk dengan akun Anda di bawah ini</p>
 
-        <!-- KANAN -->
-        <div class="auth-right">
+            @if ($errors->any())
+                <div class="alert alert-danger py-2 small rounded-3 mb-4">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i> 
+                    {{ $errors->first() }}
+                </div>
+            @endif
 
-            <div class="user-icon">
-                <i class="bi bi-person-fill"></i>
-            </div>
+            <form action="{{ url('/user/main') }}" method="POST">
+                @csrf
+                
+                <div class="mb-4">
+                    <label class="form-label text-muted small fw-semibold d-block">Masuk Sebagai</label>
+                    <div class="btn-group w-100" role="group" aria-label="Pilihan Role">
+                        <input type="radio" class="btn-check" name="role" id="role_pembeli" value="pembeli" {{ old('role', 'pembeli') == 'pembeli' ? 'checked' : '' }} autocomplete="off">
+                        <label class="btn btn-outline-tosca w-50 py-2 d-flex align-items-center justify-content-center gap-2" for="role_pembeli">
+                            <i class="bi bi-cart3"></i> Pembeli
+                        </label>
 
-            <h2>LOGIN</h2>
-            <span class="subtitle">
-                SIGN IN VIA AKUN
-            </span>
-
-            <form>
-
-                <label>Masuk sebagai :</label>
-
-                <div class="role-group">
-
-                    <button
-                        type="button"
-                        class="role-btn active"
-                        onclick="selectRole('pembeli')">
-                        <i class="bi bi-bag-fill"></i>
-                        Pembeli
-                    </button>
-
-                    <button
-                        type="button"
-                        class="role-btn"
-                        onclick="selectRole('penjual')">
-                        <i class="bi bi-shop"></i>
-                        Penjual
-                    </button>
-
+                        <input type="radio" class="btn-check" name="role" id="role_penjual" value="penjual" {{ old('role') == 'penjual' ? 'checked' : '' }} autocomplete="off">
+                        <label class="btn btn-outline-tosca w-50 py-2 d-flex align-items-center justify-content-center gap-2" for="role_penjual">
+                            <i class="bi bi-shop"></i> Penjual
+                        </label>
+                    </div>
                 </div>
 
-                <input
-                    type="hidden"
-                    id="role"
-                    name="role">
-
-                <div class="input-box">
-                    <i class="bi bi-envelope-fill"></i>
-                    <input
-                        type="email"
-                        placeholder="Username atau Email">
+                <div class="mb-3">
+                    <label for="email" class="form-label text-muted small fw-semibold">Alamat Email</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="nama@email.com" required>
                 </div>
 
-                <div class="input-box">
-                    <i class="bi bi-lock-fill"></i>
-                    <input
-                        type="password"
-                        placeholder="Kata Sandi">
+                <div class="mb-3">
+                    <label for="password" class="form-label text-muted small fw-semibold">Kata Sandi</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="••••••••••••" required>
                 </div>
 
-                <div
-                    id="alamat-box"
-                    class="input-box alamat-box">
-
-                    <i class="bi bi-geo-alt-fill"></i>
-
-                    <textarea
-                        placeholder="Alamat Toko"></textarea>
-
+                <div class="d-flex justify-content-between align-items-center mb-4 small">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="remember" name="remember">
+                        <label class="form-check-label text-muted" for="remember">Ingat Saya</label>
+                    </div>
+                    <a href="#" class="text-tosca text-decoration-none fw-semibold">Lupa Kata Sandi?</a>
                 </div>
 
-                <a href="#" class="forgot">
-                    Lupa Password?
-                </a>
-
-                <div class="login-action">
-
-                    <button class="login-btn">
-                        MASUK
-                    </button>
-
-                </div>
+                <button type="submit" class="btn btn-tosca w-100 rounded-3 mb-4 py-2">Masuk</button>
 
             </form>
 
+            <div class="mt-5 text-center">
+                <p class="text-muted small mb-0">Belum punya akun? <a href="{{ url('/sesi/register') }}" class="text-tosca text-decoration-none fw-bold">Daftar Akun</a></p>
+                <p class="text-muted small mt-4">&copy; 2026 Lapaklama</p>
+            </div>
+        </div>
+
+        <div class="col-lg-6 login-visual-section d-none d-lg-flex">
+            <div class="visual-bg-pattern">
+                <i class="bi bi-grid-3x3-gap-fill"></i>
+            </div>
+            
+            <div class="visual-icon">
+                <i class="bi bi-person-workspace"></i>
+            </div>
+            
+            <h3 class="fw-bold mb-2 text-center">Form Login Lapaklama</h3>
+            <p class="text-center opacity-75 small" style="max-width: 340px;">
+                Kelola data, pantau transaksi, dan kembangkan bisnis Anda dengan lebih mudah dalam satu tempat.
+            </p>
         </div>
 
     </div>
-
 </div>
-
 @endsection
-
-@push('scripts')
-<script>
-
-function selectRole(role){
-
-    document.getElementById('role').value = role;
-
-    let btns = document.querySelectorAll('.role-btn');
-
-    btns.forEach(btn=>{
-        btn.classList.remove('active');
-    });
-
-    event.currentTarget.classList.add('active');
-
-    const alamat =
-    document.getElementById('alamat-box');
-
-    if(role === 'penjual'){
-        alamat.style.display = 'flex';
-    }else{
-        alamat.style.display = 'none';
-    }
-
-}
-
-window.onload = () => {
-    document.getElementById('role').value='pembeli';
-}
-
-</script>
-@endpush

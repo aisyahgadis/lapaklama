@@ -5,7 +5,7 @@
     <title>@yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{{ asset('css/web.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nav-user.css') }}">
 </head>
 <script>
 
@@ -158,18 +158,10 @@ input.value="";
 
     <footer class="lapaklama-footer">
         <div class="footer-container">
-            
-            <div>
-                <a href="#" class="footer-logo">LapakLama</a>
-                <p class="footer-about">
-                    Jual baju bekasmu atau ubah menjadi fashion baru melalui layanan daur ulang kami. Temukan gaya unik sambil membantu mengurangi limbah fashion.
-                </p>
-            </div>
 
             <div>
                 <h4 class="footer-heading">Menu Bantuan</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Cara Jual</a></li>
                     <li><a href="#">Cara Beli</a></li>
                     <li><a href="#">Layanan Recycle</a></li>
                     <li><a href="#">Lacak Pesanan</a></li>

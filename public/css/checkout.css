@@ -1,0 +1,127 @@
+/* checkout.css */
+.checkout-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+}
+
+.checkout-form {
+    flex: 1.5;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.checkout-summary {
+    flex: 1;
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    height: fit-content;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 8px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-control, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.product-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.product-item img {
+    width: 80px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.product-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+}
+
+.product-info p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.total-row.grand-total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    border-top: 2px dashed #ddd;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.btn-checkout  {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 12px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.2s;
+}
+
+.btn-checkout:hover {
+    background-color: #219653;
+    text-decoration: none;
+}
+
+/* Responsif HP */
+@media (max-width: 768px) {
+    .checkout-container {
+        flex-direction: column;
+    }
+}

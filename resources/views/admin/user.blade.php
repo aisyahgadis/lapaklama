@@ -1,7 +1,7 @@
 @extends('layout.admin')
 @section('title', 'User')
 @section('content')
-    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user-admin.css') }}">
 <div class="persetujuan-container">
     
     @php

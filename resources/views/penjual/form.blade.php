@@ -82,7 +82,7 @@
                 <!-- Tombol Submit -->
                 <button type="submit" class="btn-submit">
                     Kirim Ide Daur Ulang <i class="bi bi-arrow-right ms-2"></i>
-                    <a href="{{ route('user.tracking') }}" class="btn-submit">Lihat Tracking</a>
+                    <a href="{{ route('penjual.tracking') }}" class="btn-submit">Lihat Tracking</a>
                 </button>
             </form>
         </div>

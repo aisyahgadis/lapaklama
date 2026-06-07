@@ -1,4 +1,4 @@
-@extends('layout.user')
+@extends('layout.web')
 @section('title', 'Lapaklama - Home')
 
 @section('content')
@@ -69,7 +69,7 @@
                 <div class="card-img">
                     <img src="https://i.pinimg.com/webp/1200x/42/8d/fb/428dfb1e3d23fa5b022393a7c46199ac.webp" alt="Hoodie">
                     <div class="prod-overlay">
-                        <a href="{{ route('user-view-product') }}" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Quick View</a>
+                        <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Quick View</a>
                     </div>
                 </div>
                 <div class="card-info">
@@ -181,10 +181,17 @@
     <h2 class="action-title">Ayo Coba Lapaklama Sekarang!</h2>
     <div class="action-grid">
         <div class="action-card">
+            <div class="icon-box">🏷️</div>
+            <h3>Jual Baju Bekasmu</h3>
+            <p>Ubah baju bekasmu menjadi uang dengan mudah di Lapaklama. Cukup daftar, unggah foto, dan jual!</p>
+            <a href="{{ route('jual') }}" class="btn btn-outline btn-full">Jual Sekarang</a>
+        </div>
+        
+        <div class="action-card">
             <div class="icon-box">🛍️</div>
             <h3>Beli Baju Berkualitas</h3>
             <p>Temukan baju bekas kualitas premium dengan harga terjangkau. Cari, pilih, dan beli dengan mudah!</p>
-            <a href="{{ route('baju') }}" class="btn btn-primary btn-full">Belanja Sekarang</a>
+            <a href="{{ route('baju') }}" class="btn btn-outline btn-full">Belanja Sekarang</a>
         </div>
         
         <div class="action-card">
