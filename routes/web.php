@@ -86,7 +86,6 @@ Route::get('/recyle', function () {
     return view('user-login.recyle');
 })->name('user-login.recyle');
 
-
 Route::get('/user/buy-user', function () {
     return view('user-login.buy-user');
 })->name('user-login.buy-user');
