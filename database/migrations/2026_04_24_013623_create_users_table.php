@@ -11,8 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->string('nama');
             $table->string('email')->unique();
-            $table->string('no_hp')->unique()->nullable();
-            $table->string('alamat')->nullable();
+            // $table->string('no_hp')->unique()->nullable();
+            // $table->string('alamat')->nullable();
             $table->string('password');
             $table->enum('jenis', ['admin', 'penjual', 'penjahit', 'user'])->default('user');
             $table->timestamps();
