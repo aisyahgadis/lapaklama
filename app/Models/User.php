@@ -9,22 +9,54 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $primaryKey = 'user_id';
-    protected $fillable = ['nama', 'email', 'password', 'role'];
-    protected $hidden = ['password', 'remember_token'];
+    // Menggunakan 'id' default Laravel, tidak perlu deklarasi $primaryKey
 
-    public function pembeli()
+    protected $fillable = [
+        'nama',
+        'email',
+        'password',
+        'jenis', // admin | penjual | penjahit | user
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    // -------------------------------------------------------
+    // Relasi
+    // -------------------------------------------------------
+
+    // Produk yang dijual (jika user adalah penjual)
+    public function products()
     {
-        return $this->hasOne(Pembeli::class, 'user_id', 'user_id');
+        return $this->hasMany(Product::class, 'user_id');
     }
 
-    public function penjual()
+    // Pembelian yang dilakukan (jika user adalah pembeli)
+    public function orders()
     {
-        return $this->hasOne(Penjual::class, 'user_id', 'user_id');
+        return $this->hasMany(Order::class, 'user_id');
     }
 
-    // Helper: cek role
-    public function isPembeli(): bool { return $this->role === 'pembeli'; }
-    public function isPenjual(): bool { return $this->role === 'penjual'; }
-    public function isAdmin(): bool   { return $this->role === 'admin'; }
+    // Request daur ulang yang diajukan (jika user adalah pembeli)
+    public function recycles()
+    {
+        return $this->hasMany(Recycle::class, 'user_id');
+    }
+
+    // Request daur ulang yang dikerjakan (jika user adalah penjahit)
+    public function recyclesAsPenjahit()
+    {
+        return $this->hasMany(Recycle::class, 'penjahit_id');
+    }
+
+    // -------------------------------------------------------
+    // Helper cek jenis
+    // -------------------------------------------------------
+
+    public function isAdmin(): bool    { return $this->jenis === 'admin'; }
+    public function isPenjual(): bool  { return $this->jenis === 'penjual'; }
+    public function isPenjahit(): bool { return $this->jenis === 'penjahit'; }
+    public function isUser(): bool     { return $this->jenis === 'user'; }
 }
