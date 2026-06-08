@@ -3,30 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory; // Pastikan HasFactory di-import
 
 class Product extends Model
 {
-<<<<<<< HEAD
     use HasFactory;
 
-    // Tambahkan kolom-kolom ini agar bisa diisi
-=======
->>>>>>> fed6c30316838426f2575f2ce8ef0e50f03d55aa
     protected $fillable = [
         'user_id',
         'gambar',
         'harga',
         'status',
-<<<<<<< HEAD
-        'deskripsi'
-    ];
-
-    // Relasi ke tabel User
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-=======
         'deskripsi',
     ];
 
@@ -34,7 +21,13 @@ class Product extends Model
     // Relasi
     // -------------------------------------------------------
 
-    // Penjual yang memiliki produk ini
+    // Relasi ke tabel User bawaan
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // Alias untuk relasi user (Penjual yang memiliki produk ini)
     public function penjual()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -50,7 +43,13 @@ class Product extends Model
     // Helper
     // -------------------------------------------------------
 
-    public function isTersedia(): bool { return $this->status === 'tersedia'; }
-    public function isTerjual(): bool  { return $this->status === 'terjual'; }
->>>>>>> fed6c30316838426f2575f2ce8ef0e50f03d55aa
+    public function isTersedia(): bool 
+    { 
+        return $this->status === 'tersedia'; 
+    }
+    
+    public function isTerjual(): bool  
+    { 
+        return $this->status === 'terjual'; 
+    }
 }
