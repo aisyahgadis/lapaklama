@@ -9,13 +9,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    // Menggunakan 'id' default Laravel, tidak perlu deklarasi $primaryKey
-
     protected $fillable = [
         'nama',
         'email',
         'password',
-        'jenis', // admin | penjual | penjahit | user
+        'jenis', // admin | penjual | penjahit | pembeli
+        'nama_toko',
+        'no_hp',
+        'alamat_toko',
     ];
 
     protected $hidden = [
@@ -58,5 +59,5 @@ class User extends Authenticatable
     public function isAdmin(): bool    { return $this->jenis === 'admin'; }
     public function isPenjual(): bool  { return $this->jenis === 'penjual'; }
     public function isPenjahit(): bool { return $this->jenis === 'penjahit'; }
-    public function isUser(): bool     { return $this->jenis === 'user'; }
+    public function isPembeli(): bool  { return $this->jenis === 'pembeli'; }
 }

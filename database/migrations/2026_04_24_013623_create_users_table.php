@@ -9,12 +9,14 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama')->nullable();
             $table->string('email')->unique();
-            // $table->string('no_hp')->unique()->nullable();
-            // $table->string('alamat')->nullable();
             $table->string('password');
-            $table->enum('jenis', ['admin', 'penjual', 'penjahit', 'user'])->default('user');
+            $table->enum('jenis', ['admin', 'penjual', 'penjahit', 'pembeli'])->default('pembeli');
+            $table->string('nama_toko')->nullable();
+            $table->string('no_hp')->nullable();
+            $table->text('alamat_toko')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

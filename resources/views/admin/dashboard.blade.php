@@ -60,7 +60,7 @@
                     @forelse($permintaanToko as $toko)
                     <li class="list-item">
                         <div class="item-info">
-                            <h4>{{ $toko->name }}</h4> 
+                            <h4>{{ $toko->nama }} ({{ $toko->nama_toko ?? 'Belum ada nama toko' }})</h4> 
                             <p>Daftar: {{ $toko->created_at->translatedFormat('l, d M Y, H:i') }} WIB</p>
                         </div>
                         <span class="badge badge-warning">Pending</span>
@@ -86,8 +86,8 @@
                     @forelse($antreanProduksi as $produksi)
                     <li class="list-item">
                         <div class="item-info">
-                            <h4>#{{ $produksi->product_code }} ({{ $produksi->product_name }})</h4>
-                            <p>Bahan: {{ $produksi->material_description }}</p>
+                            <h4>Ide Daur Ulang #{{ $produksi->id }} (User: {{ $produksi->user->nama ?? 'Unknown' }})</h4>
+                            <p>Deskripsi: {{ Str::limit($produksi->deskripsi, 50) }}</p>
                         </div>
                         <button class="btn-secondary">Pilih Penjahit</button>
                     </li>

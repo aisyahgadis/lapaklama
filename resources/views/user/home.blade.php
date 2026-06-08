@@ -183,14 +183,14 @@
             <div class="icon-box">🛍️</div>
             <h3>Beli Baju Berkualitas</h3>
             <p>Temukan baju bekas kualitas premium dengan harga terjangkau. Cari, pilih, dan beli dengan mudah!</p>
-            <a href="{{ route('baju') }}" class="btn btn-primary btn-full">Belanja Sekarang</a>
+            <a href="{{ route('user.buy-user') }}" class="btn btn-primary btn-full">Belanja Sekarang</a>
         </div>
         
         <div class="action-card">
             <div class="icon-box">✂️</div>
             <h3>Ubah Baju Lamamu</h3>
             <p>Lapaklama membantu mengubah baju lamamu jadi lebih bernilai dengan sentuhan *upcycle* dari kreator kami.</p>
-            <a href="{{ route('daurulang') }}" class="btn btn-outline btn-full">Mulai Recycle</a>
+            <a href="{{ route('user.recyle-user') }}" class="btn btn-outline btn-full">Mulai Recycle</a>
         </div>
     </div>
 </section>

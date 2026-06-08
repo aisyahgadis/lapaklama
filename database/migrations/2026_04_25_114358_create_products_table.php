@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete(); // penjual
             $table->string('gambar');
             $table->unsignedBigInteger('harga');
+            $table->string('kategori')->nullable();
             $table->enum('status', ['tersedia', 'terjual'])->default('tersedia');
             $table->text('deskripsi');
             $table->timestamps();

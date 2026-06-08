@@ -3,29 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// PASTIKAN NAMA MODEL DI BAWAH INI SESUAI DENGAN PROJECT KAMU
-use App\Models\Shop;       // Model untuk Toko/Penjual
-use App\Models\Production; // Model untuk Antrean Produksi
-use App\Models\Tailor;     // Model untuk Penjahit
-use App\Models\Product;    // Model untuk Produk
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Recycle;
 
 class DashboardController extends Controller
 {
     public function index()
     {
         // 1. Mengambil data untuk Statistik (Cards)
-        $penjualMenunggu = Shop::where('status', 'pending')->count();
-        $menungguPenjahit = Production::where('status', 'pending')->count(); // Sesuaikan statusnya
-        $penjahitAktif = Tailor::where('status', 'aktif')->count();
+        $penjualMenunggu = User::where('jenis', 'penjual')->count();
+        $menungguPenjahit = Recycle::where('status', 'menunggu_assign')->count();
+        $penjahitAktif = User::where('jenis', 'penjahit')->count();
         $totalProduk = Product::count();
 
         // 2. Mengambil data untuk List Tabel (Dibatasi 5 data terbaru agar rapi)
-        $permintaanToko = Shop::where('status', 'pending')
+        $permintaanToko = User::where('jenis', 'penjual')
                             ->orderBy('created_at', 'desc')
                             ->take(5)
                             ->get();
 
-        $antreanProduksi = Production::where('status', 'pending')
+        $antreanProduksi = Recycle::where('status', 'menunggu_assign')
+                            ->with('user')
                             ->orderBy('created_at', 'desc')
                             ->take(5)
                             ->get();

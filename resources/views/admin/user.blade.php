@@ -1,28 +1,29 @@
-user db 
-@extends('layouts.admin')
-
+@extends('layout.admin')
+@section('title', 'Manajemen User')
 @section('content')
-<div class="container">
+<link rel="stylesheet" href="{{ asset('css/user-admin.css') }}">
+
+<div class="persetujuan-container">
     
-    <div class="page-header">
+    <div class="header-wrapper">
         <div class="header-text">
-            <h2>Manajemen User</h2>
-            <p class="subtitle">Kelola pengguna yang terdaftar di sistem</p>
+            <h2 class="page-title">Manajemen User</h2>
+            <p class="page-subtitle">Kelola pengguna yang terdaftar di sistem</p>
         </div>
         
-        <div class="card-summary">
-            <div class="card-icon">
+        <div class="user-summary-card">
+            <div class="summary-icon">
                 <i class="fas fa-users"></i>
             </div>
-            <div class="card-info">
-                <span class="card-label">Total User</span>
-                <span class="card-value">{{ $totalUsers }}</span>
+            <div class="summary-text">
+                <span class="summary-label">Total User</span>
+                <span class="summary-count">{{ $totalUsers }}</span>
             </div>
         </div>
     </div>
 
-    <div class="table-container">
-        <table class="custom-table">
+    <div class="table-responsive">
+        <table class="admin-table">
             <thead>
                 <tr>
                     <th width="5%">No</th>
@@ -36,7 +37,7 @@ user db
                 @forelse($users as $index => $user)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td class="font-semibold">{{ $user->name }}</td>
+                        <td class="font-semibold">{{ $user->nama }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at->format('d M Y') }}</td>
                         <td>

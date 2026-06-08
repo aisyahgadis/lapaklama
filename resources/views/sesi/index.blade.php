@@ -31,12 +31,12 @@
                 <div class="mb-4">
                     <label class="form-label text-muted small fw-semibold d-block">Masuk Sebagai</label>
                     <div class="btn-group w-100" role="group" aria-label="Pilihan Role">
-                        <input type="radio" class="btn-check" name="role" id="role_pembeli" value="pembeli" {{ old('role', 'pembeli') == 'pembeli' ? 'checked' : '' }} autocomplete="off">
+                        <input type="radio" class="btn-check" name="jenis" id="role_pembeli" value="pembeli" {{ old('jenis', 'pembeli') == 'pembeli' ? 'checked' : '' }} autocomplete="off">
                         <label class="btn btn-outline-tosca w-50 py-2 d-flex align-items-center justify-content-center gap-2" for="role_pembeli">
                             <i class="bi bi-cart3"></i> Pembeli
                         </label>
 
-                        <input type="radio" class="btn-check" name="role" id="role_penjual" value="penjual" {{ old('role') == 'penjual' ? 'checked' : '' }} autocomplete="off">
+                        <input type="radio" class="btn-check" name="jenis" id="role_penjual" value="penjual" {{ old('jenis') == 'penjual' ? 'checked' : '' }} autocomplete="off">
                         <label class="btn btn-outline-tosca w-50 py-2 d-flex align-items-center justify-content-center gap-2" for="role_penjual">
                             <i class="bi bi-shop"></i> Penjual
                         </label>

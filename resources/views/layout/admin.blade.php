@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>@yield('title') - Lapaklama</title>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/admin-panel.css') }}">
 </head>
 <body>
@@ -23,27 +24,27 @@
 
         <ul class="sidebar-menu">
             <li>
-                <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     DB Dashboard
                 </a>
             </li>
             <li>
-                <a href="{{ route('user') }}" class="{{ request()->routeIs('user') ? 'active' : '' }}">
+                <a href="{{ route('admin.user') }}" class="{{ request()->routeIs('admin.user') ? 'active' : '' }}">
                     US Data User
                 </a>
             </li>
             <li>
-                <a href="{{ route('persetujuan') }}" class="{{ request()->routeIs('persetujuan') ? 'active' : '' }}">
+                <a href="{{ route('admin.persetujuan') }}" class="{{ request()->routeIs('admin.persetujuan') ? 'active' : '' }}">
                     PZ Persetujuan Penjual
                 </a>
             </li>
             <li>
-                <a href="{{ route('recycle-detail') }}" class="{{ request()->routeIs('recycle-detail') ? 'active' : '' }}">
+                <a href="{{ route('admin.recycle-detail') }}" class="{{ request()->routeIs('admin.recycle-detail') ? 'active' : '' }}">
                     PJ Kelola Penjahit
                 </a>
             </li>
             <li>
-                <a href="{{ route('product') }}" class="{{ request()->routeIs('product') ? 'active' : '' }}">
+                <a href="{{ route('admin.product') }}" class="{{ request()->routeIs('admin.product') ? 'active' : '' }}">
                     PR Data Produk
                 </a>
             </li>

@@ -4,18 +4,19 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/persetujuan.css') }}">
 
-    <div class="persetujuan-header">
-        <h2>Persetujuan Penjual Baru</h2>
+<div class="persetujuan-container">
+    <div class="header-wrapper" style="margin-bottom: 24px;">
+        <h2 class="page-title">Persetujuan Penjual Baru</h2>
+        <p class="page-subtitle">Kelola pendaftaran toko baru dari calon penjual</p>
     </div>
 
-    <div class="card">
-        <table class="table-approval">
+    <div class="table-responsive">
+        <table class="admin-table">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nama Toko</th>
                     <th>Nama Pemilik</th>
-                    <th>Dokumen</th>
                     <th>Tanggal Pengajuan</th>
                     <th>Aksi</th>
                 </tr>
@@ -25,16 +26,11 @@
                     <tr>
                         <td>#{{ $penjual->id }}</td>
                         <td>{{ $penjual->nama_toko }}</td>
-                        <td>{{ $penjual->nama_pemilik }}</td>
-                        <td>
-                            <a href="{{ asset('storage/' . $penjual->dokumen) }}" target="_blank" class="link-doc">
-                                Lihat Dokumen
-                            </a>
-                        </td>
+                        <td>{{ $penjual->nama }}</td>
                         <td>{{ $penjual->created_at->format('d M Y') }}</td>
                         <td class="action-buttons">
-                            <button class="btn btn-approve">Setujui</button>
-                            <button class="btn btn-reject">Tolak</button>
+                            <button class="btn btn-setujui">Setujui</button>
+                            <button class="btn" style="background-color: #e53e3e; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px; margin-left: 8px;">Tolak</button>
                         </td>
                     </tr>
                 @empty
@@ -47,4 +43,5 @@
             </tbody>
         </table>
     </div>
+</div>
 @endsection

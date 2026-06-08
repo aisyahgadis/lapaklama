@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 
@@ -13,23 +12,20 @@ class UserSeeder extends Seeder
         // Admin
         User::create([
             'nama'     => 'Admin LapaKlama',
-            'email'    => 'admin@lapaklama.com',
+            'email'    => 'lapaklama@lapaklama.com',
             'password' => bcrypt('admin123'),
             'jenis'    => 'admin',
         ]);
  
         // Penjual
         User::create([
-            'nama'     => 'Budi Santoso',
-            'email'    => 'budi@lapaklama.com',
-            'password' => bcrypt('penjual123'),
-            'jenis'    => 'penjual',
-        ]);
-        User::create([
-            'nama'     => 'Siti Rahayu',
-            'email'    => 'siti@lapaklama.com',
-            'password' => bcrypt('penjual123'),
-            'jenis'    => 'penjual',
+            'nama'        => 'Budi Santoso',
+            'nama_toko'   => 'Toko Budi',
+            'no_hp'       => '081234567890',
+            'alamat_toko' => 'Jl. Mawar No. 123',
+            'email'       => 'budi@lapaklama.com',
+            'password'    => bcrypt('penjual123'),
+            'jenis'       => 'penjual',
         ]);
 
         // Penjahit
@@ -39,31 +35,13 @@ class UserSeeder extends Seeder
             'password' => bcrypt('penjahit123'),
             'jenis'    => 'penjahit',
         ]);
-        User::create([
-            'nama'     => 'Dewi Kusuma',
-            'email'    => 'dewi@lapaklama.com',
-            'password' => bcrypt('penjahit123'),
-            'jenis'    => 'penjahit',
-        ]);
 
-        // User biasa
+        // Pembeli
         User::create([
             'nama'     => 'Andi Pratama',
             'email'    => 'andi@lapaklama.com',
             'password' => bcrypt('user123'),
-            'jenis'    => 'user',
-        ]);
-        User::create([
-            'nama'     => 'Rina Putri',
-            'email'    => 'rina@lapaklama.com',
-            'password' => bcrypt('user123'),
-            'jenis'    => 'user',
-        ]);
-        User::create([
-            'nama'     => 'Fajar Nugroho',
-            'email'    => 'fajar@lapaklama.com',
-            'password' => bcrypt('user123'),
-            'jenis'    => 'user',
+            'jenis'    => 'pembeli',
         ]);
     }
 }

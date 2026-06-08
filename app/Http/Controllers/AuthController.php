@@ -10,7 +10,6 @@ class AuthController extends Controller
     // Method untuk menampilkan View form login
     public function showLoginForm()
     {
-        // Ganti 'sesi.login' dengan nama file blade-mu (misal di dalam folder resources/views/sesi/login.blade.php)
         return view('sesi.index'); 
     }
 
@@ -21,13 +20,13 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-            'role' => 'required|in:pembeli,penjual'
+            'jenis' => 'required|in:pembeli,penjual'
         ], [
             'email.required' => 'Email wajib diisi.',
             'password.required' => 'Kata sandi wajib diisi.'
         ]);
 
-        // 2. Siapkan data kredensial
+        // 2. Siapkan data kredensial (hanya email dan password)
         $credentials = [
             'email' => $request->email,
             'password' => $request->password,
@@ -43,31 +42,29 @@ class AuthController extends Controller
             $user = Auth::user();
 
             // 4. Pengecekan Khusus Admin Lapaklama
-            // Jika email adalah admin, langsung arahkan ke halaman admin tanpa mempedulikan role yang dipilih di form
-            if ($user->email === 'lapaklama@lapaklama.com') {
-                return redirect()->intended('/admin/dashboard'); // Sesuaikan dengan URL route admin kamu
+            if ($user->email === 'lapaklama@lapaklama.com' || $user->jenis === 'admin') {
+                return redirect()->intended('/admin/dashboard');
             }
 
-            // 5. Cek apakah role yang dipilih sesuai dengan role di database
-            if ($user->role !== $request->role) {
+            // 5. Cek apakah jenis yang dipilih sesuai dengan jenis di database
+            if ($user->jenis !== $request->jenis) {
                 Auth::logout();
                 return back()->withErrors([
-                    'role' => 'Role tidak sesuai dengan akun Anda.',
+                    'message' => 'Jenis akun tidak sesuai dengan akun Anda.',
                 ])->onlyInput('email');
             }
 
-            // 6. Arahkan berdasarkan role jika login sukses
-            if ($user->role === 'pembeli') {
-                // Gunakan nama route (rekomendasi) atau URL langsung
+            // 6. Arahkan berdasarkan jenis jika login sukses
+            if ($user->jenis === 'pembeli') {
                 return redirect()->route('user.home'); 
-            } elseif ($user->role === 'penjual') {
-                return redirect()->route('penjual.main');
+            } elseif ($user->jenis === 'penjual') {
+                return redirect()->route('main');
             }
         }
 
         // 7. Jika gagal, kembalikan ke halaman login
         return back()->withErrors([
             'email' => 'Email atau kata sandi yang Anda masukkan salah.',
-        ])->onlyInput('email', 'role');
+        ])->onlyInput('email', 'jenis');
     }
 }

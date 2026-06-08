@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory; // Pastikan HasFactory di-import
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -13,6 +13,7 @@ class Product extends Model
         'user_id',
         'gambar',
         'harga',
+        'kategori',
         'status',
         'deskripsi',
     ];
