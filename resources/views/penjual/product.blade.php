@@ -3,54 +3,27 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/seller-product.css') }}">
 
-{{-- Membuat Dummy Data langsung di Blade --}}
-@php
-    $dummyProducts = [
-        (object)[
-            'id' => 1,
-            'name' => 'Sepatu Sneakers Pria',
-            'price' => 250000,
-            'sold_qty' => 15,
-            'image' => 'https://via.placeholder.com/250x200/eee/333?text=Sepatu+Sneakers'
-        ],
-        (object)[
-            'id' => 2,
-            'name' => 'Kemeja Flannel Kotak',
-            'price' => 120000,
-            'sold_qty' => 42,
-            'image' => 'https://via.placeholder.com/250x200/eee/333?text=Kemeja+Flannel'
-        ],
-        (object)[
-            'id' => 3,
-            'name' => 'Jam Tangan Minimalis',
-            'price' => 350000,
-            'sold_qty' => 8,
-            'image' => 'https://via.placeholder.com/250x200/eee/333?text=Jam+Tangan'
-        ],
-        (object)[
-            'id' => 4,
-            'name' => 'Tas Ransel Kanvas',
-            'price' => 180000,
-            'sold_qty' => 25,
-            'image' => 'https://via.placeholder.com/250x200/eee/333?text=Tas+Ransel'
-        ]
-    ];
-@endphp
-
 <div class="product-dashboard">
     
     <div class="dashboard-header">
         <h1>Daftar Produk Saya</h1>
-        {{-- Link menuju form tambah produk --}}
-        <a href="{{ route('penjual.edit-product') }}" class="btn-add">+ Tambah Produk</a>
+        {{-- Tombol opsional untuk tambah produk baru --}}
+        <a href="{{ route('jual') }}" class="btn-add">+ Tambah Produk</a>
     </div>
 
+    {{-- Pesan Sukses jika ada (setelah edit/hapus) --}}
+    @if(session('success'))
+        <div style="background: #d4edda; color: #155724; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="product-grid">
-        {{-- Looping menggunakan data dummy --}}
-        @foreach ($dummyProducts as $product)
+        {{-- Looping data produk dari controller --}}
+        @forelse ($products as $product)
             <div class="product-card">
-                {{-- Gambar menggunakan URL dari data dummy --}}
-                <img src="{{ $product->image }}" alt="{{ $product->name }}" class="product-image">
+                {{-- Gambar Produk --}}
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image" onerror="this.src='https://via.placeholder.com/250x200?text=No+Image'">
                 
                 <div class="product-info">
                     <h3 class="product-title">{{ $product->name }}</h3>
@@ -60,15 +33,21 @@
 
                 <div class="product-actions">
                     {{-- Tombol Edit --}}
-                    <a href="{{ route('penjual.edit-product', ['id' => $product->id]) }}" class="btn-action btn-edit">Edit</a>
+                    <a href="{{ route('products.edit', $product->id) }}" class="btn-action btn-edit">Edit</a>
                     
-                    {{-- Tombol Hapus dengan Notif Konfirmasi --}}
-                    <form action="#" class="form-delete" onsubmit="event.preventDefault(); if(confirm('Apakah Anda yakin ingin menghapus produk {{ $product->name }}?')) { alert('Hapus produk ID: {{ $product->id }} (Dummy)'); }">
+                    {{-- Tombol Hapus (Harus menggunakan Form agar metodenya DELETE) --}}
+                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="form-delete" onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?');">
+                        @csrf
+                        @method('DELETE')
                         <button type="submit" class="btn-action btn-delete">Hapus</button>
                     </form>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div style="grid-column: 1 / -1; text-align: center; padding: 50px; color: #6c757d;">
+                Belum ada produk yang dijual. Silakan tambah produk baru.
+            </div>
+        @endforelse
     </div>
 
 </div>

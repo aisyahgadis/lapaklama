@@ -11,14 +11,14 @@
             <h1>Dashboard Overview</h1>
             <p>Pantau aktivitas daur ulang dan pendaftaran penjual hari ini.</p>
         </div>
-        <button class="btn-primary">+ Tambah Penjahit Baru</button>
+        <a href="#" class="btn-primary" style="text-decoration: none;">+ Tambah Penjahit Baru</a>
     </div>
 
     <div class="stat-cards">
         <div class="card">
             <div class="card-info">
                 <h3>Penjual Menunggu</h3>
-                <p class="stat-number color-orange">8</p>
+                <p class="stat-number color-orange">{{ $penjualMenunggu }}</p>
             </div>
             <div class="card-icon bg-orange">WA</div>
         </div>
@@ -26,7 +26,7 @@
         <div class="card">
             <div class="card-info">
                 <h3>Menunggu Penjahit</h3>
-                <p class="stat-number color-red">15</p>
+                <p class="stat-number color-red">{{ $menungguPenjahit }}</p>
             </div>
             <div class="card-icon bg-red">PR</div>
         </div>
@@ -34,7 +34,7 @@
         <div class="card">
             <div class="card-info">
                 <h3>Penjahit Aktif</h3>
-                <p class="stat-number color-teal">24</p>
+                <p class="stat-number color-teal">{{ $penjahitAktif }}</p>
             </div>
             <div class="card-icon bg-teal">AC</div>
         </div>
@@ -42,7 +42,7 @@
         <div class="card">
             <div class="card-info">
                 <h3>Total Produk</h3>
-                <p class="stat-number color-blue">342</p>
+                <p class="stat-number color-blue">{{ $totalProduk }}</p>
             </div>
             <div class="card-icon bg-blue">TO</div>
         </div>
@@ -57,20 +57,21 @@
             </div>
             <div class="panel-body">
                 <ul class="list-group">
+                    @forelse($permintaanToko as $toko)
                     <li class="list-item">
                         <div class="item-info">
-                            <h4>Kreasi Karung Goni</h4>
-                            <p>Daftar: Hari ini, 09:30 WIB</p>
+                            <h4>{{ $toko->name }}</h4> 
+                            <p>Daftar: {{ $toko->created_at->translatedFormat('l, d M Y, H:i') }} WIB</p>
                         </div>
                         <span class="badge badge-warning">Pending</span>
                     </li>
+                    @empty
                     <li class="list-item">
                         <div class="item-info">
-                            <h4>Limbah Kayu Art</h4>
-                            <p>Daftar: Kemarin, 15:20 WIB</p>
+                            <p>Tidak ada permintaan buka toko saat ini.</p>
                         </div>
-                        <span class="badge badge-warning">Pending</span>
                     </li>
+                    @endforelse
                 </ul>
             </div>
         </div>
@@ -82,20 +83,21 @@
             </div>
             <div class="panel-body">
                 <ul class="list-group">
+                    @forelse($antreanProduksi as $produksi)
                     <li class="list-item">
                         <div class="item-info">
-                            <h4>#PRD-001 (Totebag Jeans)</h4>
-                            <p>Bahan: 5kg Celana Jeans Bekas</p>
+                            <h4>#{{ $produksi->product_code }} ({{ $produksi->product_name }})</h4>
+                            <p>Bahan: {{ $produksi->material_description }}</p>
                         </div>
                         <button class="btn-secondary">Pilih Penjahit</button>
                     </li>
+                    @empty
                     <li class="list-item">
                         <div class="item-info">
-                            <h4>#PRD-002 (Dompet Spanduk)</h4>
-                            <p>Bahan: 10 Lembar Spanduk</p>
+                            <p>Tidak ada antrean produksi saat ini.</p>
                         </div>
-                        <button class="btn-secondary">Pilih Penjahit</button>
                     </li>
+                    @endforelse
                 </ul>
             </div>
         </div>

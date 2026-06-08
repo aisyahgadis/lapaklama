@@ -15,7 +15,7 @@
             <div class="counter-icon"></div>
             <div class="counter-info">
                 <span class="counter-label">TOTAL PRODUK</span>
-                <span class="counter-value">4</span>
+                <span class="counter-value">{{ $totalProduk }}</span>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
             <thead>
                 <tr>
                     <th style="width: 8%;">NO</th>
-                    <th style="width: 25%;">NAMA PRODUK</th>
+                    <th style="width: 25%;">NAMA PRODUK / DESKRIPSI</th>
                     <th style="width: 20%;">KATEGORI</th>
                     <th style="width: 18%;">HARGA</th>
                     <th style="width: 14%;">STOK</th>
@@ -33,46 +33,29 @@
                 </tr>
             </thead>
             <tbody>
+                @forelse($products as $index => $product)
                 <tr>
-                    <td>1</td>
-                    <td class="fw-bold">Laptop ASUS ROG</td>
-                    <td>Elektronik</td>
-                    <td>Rp 18.500.000</td>
-                    <td>12 Pcs</td>
+                    <td>{{ $index + 1 }}</td>
+                    
+                    <td class="fw-bold">{{ $product->nama_produk ?? $product->deskripsi }}</td>
+                    
+                    <td>{{ $product->kategori ?? 'Umum' }}</td>
+                    
+                    <td>Rp {{ number_format($product->harga, 0, ',', '.') }}</td>
+                    
+                    <td>{{ $product->stok ?? '1' }} Pcs</td>
+                    
                     <td>
                         <button class="btn-detail">Detail</button>
                     </td>
                 </tr>
+                @empty
                 <tr>
-                    <td>2</td>
-                    <td class="fw-bold">Smartphone Samsung S24</td>
-                    <td>Elektronik</td>
-                    <td>Rp 15.200.000</td>
-                    <td>8 Pcs</td>
-                    <td>
-                        <button class="btn-detail">Detail</button>
+                    <td colspan="6" style="text-align: center; padding: 20px;">
+                        Belum ada produk yang terdaftar.
                     </td>
                 </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="fw-bold">Meja Kerja Minimalis</td>
-                    <td>Furnitur</td>
-                    <td>Rp 850.000</td>
-                    <td>25 Pcs</td>
-                    <td>
-                        <button class="btn-detail">Detail</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="fw-bold">Kemeja Flanel Premium</td>
-                    <td>Pakaian</td>
-                    <td>Rp 249.000</td>
-                    <td>50 Pcs</td>
-                    <td>
-                        <button class="btn-detail">Detail</button>
-                    </td>
-                </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

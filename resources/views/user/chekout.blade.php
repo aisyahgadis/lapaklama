@@ -3,65 +3,72 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/checkout.css') }}">
 
-<div class="checkout-container">
-    <div class="checkout-form">
-        <form action="{{ route('user.payment') }}" method="POST">
-            
+<form action="{{ route('user.payment', $product->id) }}" method="POST" style="display: contents;">
+    @csrf <div class="checkout-container">
+        
+        <div class="checkout-form">
             <div class="section-title">Alamat Pengiriman</div>
             <div class="form-group">
                 <label>Nama Penerima</label>
-                <input type="text" class="form-control" value="Budi Santoso" placeholder="Nama Lengkap">
+                <input type="text" name="nama_penerima" class="form-control" value="{{ Auth::check() ? Auth::user()->name : '' }}" placeholder="Nama Lengkap" required>
             </div>
             <div class="form-group">
                 <label>Nomor Telepon/WhatsApp</label>
-                <input type="text" class="form-control" value="081234567890" placeholder="Contoh: 08123xxx">
+                <input type="text" name="no_telp" class="form-control" placeholder="Contoh: 08123xxx" required>
             </div>
             <div class="form-group">
                 <label>Alamat Lengkap</label>
-                <textarea rows="3" placeholder="Nama jalan, nomor rumah, RT/RW, Kecamatan, Kota, Kode Pos">Jl. Anggrek No. 12, RT 03/RW 04, Meruya Utara, Kembangan, Jakarta Barat, 11620</textarea>
+                <textarea name="alamat" rows="3" class="form-control" placeholder="Nama jalan, nomor rumah, RT/RW, Kecamatan, Kota, Kode Pos" required></textarea>
             </div>
 
             <div class="section-title">Metode Pembayaran</div>
             <div class="form-group">
                 <label>Pilih Pembayaran</label>
-                <select>
+                <select name="metode_pembayaran" class="form-control" required>
                     <option value="gopay">GoPay / QRIS</option>
                     <option value="bca">Transfer Bank BCA (Virtual Account)</option>
                     <option value="mandiri">Transfer Bank Mandiri</option>
                     <option value="cod">Bayar di Tempat (COD)</option>
                 </select>
             </div>
+        </div>
 
-        </form>
-    </div>
-
-    <div class="checkout-summary">
-        <div class="section-title">Ringkasan Order</div>
-        
-        <div class="product-item">
-            <img src="https://via.placeholder.com/80x90?text=Baju" alt="Produk">
-            <div class="product-info">
-                <h4>Kemeja Flanel Kotak-Kotak</h4>
-                <p>Ukuran: L</p>
-                <p>1 pcs x Rp 150.000</p>
+        <div class="checkout-summary">
+            <div class="section-title">Ringkasan Order</div>
+            
+            <div class="product-item">
+                <img src="{{ asset('storage/' . $product->gambar) }}" alt="Produk" style="width: 80px; height: 90px; object-fit: cover;">
+                <div class="product-info">
+                    <h4>Produk Fashion #{{ $product->id }}</h4>
+                    <p>1 pcs</p>
+                    <p>Rp {{ number_format($product->harga, 0, ',', '.') }}</p>
+                </div>
             </div>
-        </div>
 
-        <div class="total-row">
-            <span>Subtotal Produk</span>
-            <span>Rp 150.000</span>
-        </div>
-        <div class="total-row">
-            <span>Biaya Pengiriman</span>
-            <span>Rp 15.000</span>
+            @php
+                $ongkir = 15000; // Contoh ongkir statis, bisa kamu ubah nanti
+                $total = $product->harga + $ongkir;
+            @endphp
+
+            <div class="total-row">
+                <span>Subtotal Produk</span>
+                <span>Rp {{ number_format($product->harga, 0, ',', '.') }}</span>
+            </div>
+            <div class="total-row">
+                <span>Biaya Pengiriman</span>
+                <span>Rp {{ number_format($ongkir, 0, ',', '.') }}</span>
+            </div>
+            
+            <div class="total-row grand-total">
+                <span>Total Pembayaran</span>
+                <span>Rp {{ number_format($total, 0, ',', '.') }}</span>
+            </div>
+
+            <button type="submit" class="btn-checkout" onclick="return confirm('Apakah kamu yakin ingin memproses pembayaran ini? Barang akan otomatis ditandai sebagai terjual.')">
+                Proses Pembayaran
+            </button>
         </div>
         
-        <div class="total-row grand-total">
-            <span>Total Pembayaran</span>
-            <span>Rp 165.000</span>
-        </div>
-
-        <a href="{{ route('user.payment') }}" class="btn-checkout">Proses Pembayaran</a>
     </div>
-</div>
+</form>
 @endsection

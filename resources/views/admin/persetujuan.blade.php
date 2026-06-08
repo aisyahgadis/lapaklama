@@ -1,66 +1,50 @@
 @extends('layout.admin')
-
 @section('title', 'Persetujuan Penjual')
+
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/persetujuan.css') }}">
-    
-    <div class="persetujuan-container">
-        <div class="total-pending-badge">
-            Menunggu Persetujuan: <strong>2 Toko</strong>
-        </div>
-        <div class="page-header">
-            <h1 class="page-title">Persetujuan Penjual</h1>
-            <p class="page-subtitle">Kelola dan setujui toko yang mengajukan pendaftaran sebagai penjual baru.</p>
-        </div>
 
-        <div class="table-responsive">
-            <table class="admin-table">
-                <thead>
+    <div class="persetujuan-header">
+        <h2>Persetujuan Penjual Baru</h2>
+    </div>
+
+    <div class="card">
+        <table class="table-approval">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Toko</th>
+                    <th>Nama Pemilik</th>
+                    <th>Dokumen</th>
+                    <th>Tanggal Pengajuan</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($daftarPenjual as $penjual)
                     <tr>
-                        <th>Nama Toko / Pemilik</th>
-                        <th>Kategori</th>
-                        <th>Dokumen</th>
-                        <th class="text-center">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
+                        <td>#{{ $penjual->id }}</td>
+                        <td>{{ $penjual->nama_toko }}</td>
+                        <td>{{ $penjual->nama_pemilik }}</td>
                         <td>
-                            <p class="project-name">Toko Elektronik Maju</p>
-                            <span class="project-deadline">Pemilik: Budi Santoso</span>
-                        </td>
-                        <td>
-                            <span>Elektronik</span>
-                        </td>
-                        <td>
-                            <a href="#" class="select-penjahit" style="text-decoration: none; display: inline-block; text-align: center; width: auto;">
-                                Lihat Dokumen KTP/SIUP
+                            <a href="{{ asset('storage/' . $penjual->dokumen) }}" target="_blank" class="link-doc">
+                                Lihat Dokumen
                             </a>
                         </td>
-                        <td class="text-center">
-                            <button class="btn-setujui">Setujui</button>
+                        <td>{{ $penjual->created_at->format('d M Y') }}</td>
+                        <td class="action-buttons">
+                            <button class="btn btn-approve">Setujui</button>
+                            <button class="btn btn-reject">Tolak</button>
                         </td>
                     </tr>
+                @empty
                     <tr>
-                        <td>
-                            <p class="project-name">Sneakers Hype</p>
-                            <span class="project-deadline">Pemilik: Andi Wijaya</span>
-                        </td>
-                        <td>
-                            <span>Fashion & Shoes</span>
-                        </td>
-                        <td>
-                            <a href="#" class="select-penjahit" style="text-decoration: none; display: inline-block; text-align: center; width: auto;">
-                                Lihat Dokumen KTP/SIUP
-                            </a>
-                        </td>
-                        <td class="text-center">
-                            <button class="btn-setujui">Setujui</button>
+                        <td colspan="6" style="text-align: center; padding: 20px;">
+                            Saat ini belum ada pengajuan penjual baru.
                         </td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
-
+                @endforelse
+            </tbody>
+        </table>
     </div>
 @endsection

@@ -1,58 +1,28 @@
-@extends('layout.admin')
-@section('title', 'User')
-@section('content')
-    <link rel="stylesheet" href="{{ asset('css/user-admin.css') }}">
-<div class="persetujuan-container">
-    
-    @php
-        $dummyUsers = [
-            [
-                'id' => 1,
-                'name' => 'Ahmad Fauzi',
-                'email' => 'ahmad.fauzi@example.com',
-                'created_at' => '01 Jun 2026'
-            ],
-            [
-                'id' => 2,
-                'name' => 'Siti Rahma',
-                'email' => 'siti.rahma@example.com',
-                'created_at' => '28 Mei 2026'
-            ],
-            [
-                'id' => 3,
-                'name' => 'Budi Santoso',
-                'email' => 'budi.santoso@example.com',
-                'created_at' => '15 Mei 2026'
-            ],
-            [
-                'id' => 4,
-                'name' => 'Diana Putri',
-                'email' => 'diana.putri@example.com',
-                'created_at' => '10 Mei 2026'
-            ]
-        ];
-        $totalUsersDummy = count($dummyUsers);
-    @endphp
+user db 
+@extends('layouts.admin')
 
-    <div class="header-wrapper">
-        <div>
-            <h1 class="page-title">Manajemen User</h1>
-            <p class="page-subtitle">Kelola pengguna yang terdaftar di sistem</p>
+@section('content')
+<div class="container">
+    
+    <div class="page-header">
+        <div class="header-text">
+            <h2>Manajemen User</h2>
+            <p class="subtitle">Kelola pengguna yang terdaftar di sistem</p>
         </div>
         
-        <div class="user-summary-card">
-            <div class="summary-icon">
+        <div class="card-summary">
+            <div class="card-icon">
                 <i class="fas fa-users"></i>
             </div>
-            <div class="summary-text">
-                <span class="summary-label">Total User</span>
-                <span class="summary-count">{{ $totalUsersDummy }}</span>
+            <div class="card-info">
+                <span class="card-label">Total User</span>
+                <span class="card-value">{{ $totalUsers }}</span>
             </div>
         </div>
     </div>
 
-    <div class="table-responsive">
-        <table class="admin-table">
+    <div class="table-container">
+        <table class="custom-table">
             <thead>
                 <tr>
                     <th width="5%">No</th>
@@ -63,19 +33,26 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($dummyUsers as $index => $user)
+                @forelse($users as $index => $user)
                     <tr>
                         <td>{{ $index + 1 }}</td>
+                        <td class="font-semibold">{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->created_at->format('d M Y') }}</td>
                         <td>
-                            <p class="project-name">{{ $user['name'] }}</p>
-                        </td>
-                        <td>{{ $user['email'] }}</td>
-                        <td>{{ $user['created_at'] }}</td>
-                        <td>
-                            <button type="button" class="btn-setujui">Detail</button>
+                            <div class="action-buttons">
+                                <a href="#" class="btn-action btn-edit" title="Edit"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="btn-action btn-delete" title="Hapus"><i class="fas fa-trash"></i></a>
+                            </div>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="5" class="text-center empty-state">
+                            Tidak ada data user yang ditemukan.
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

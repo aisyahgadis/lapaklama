@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <form action="{{ url('/user/main') }}" method="POST">
+            <form action="{{ url('/sesi/index') }}" method="POST">
                 @csrf
                 
                 <div class="mb-4">
