@@ -208,6 +208,10 @@
                             @endif
                         </div>
                     </div>
+                    <div style="text-align: center; padding: 10px;">
+                        <p style="font-size: 0.85rem; color: #555; margin-bottom: 5px;"><i class="bi bi-qr-code"></i> Scan untuk Detail</p>
+                        <img src="https://chart.googleapis.com/chart?chs=120x120&cht=qr&chl={{ urlencode('Order #'.$order->id.' | Status: '.$order->status.' | Produk: '.($order->product->nama ?? $order->product->kategori)) }}&choe=UTF-8" alt="QR Code">
+                    </div>
                 </div>
 
                 <div class="order-actions">
@@ -281,6 +285,10 @@
                                 </p>
                             @endif
                         </div>
+                    </div>
+                    <div style="text-align: center; padding: 10px;">
+                        <p style="font-size: 0.85rem; color: #555; margin-bottom: 5px;"><i class="bi bi-qr-code"></i> Scan untuk Detail</p>
+                        <img src="https://chart.googleapis.com/chart?chs=120x120&cht=qr&chl={{ urlencode('Daur Ulang | Status: '.$recycle->status.' | Kategori: '.($recycle->kategori ?? 'Custom')) }}&choe=UTF-8" alt="QR Code">
                     </div>
                 </div>
 
