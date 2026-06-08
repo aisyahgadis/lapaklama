@@ -12,7 +12,7 @@
                 Temukan gaya unik sambil membantu mengurangi limbah fashion dunia.
             </p>
             <div class="hero-buttons">
-                <a href="{{ route('penjual.jual') }}" class="btn btn-primary">Mulai Sekarang</a>
+                <a href="{{ route('jual') }}" class="btn btn-primary">Mulai Sekarang</a>
                 <a href="{{ route('penjual.product') }}" class="btn btn-outline">Lihat Produk</a>
             </div>
         </div>

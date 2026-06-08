@@ -41,6 +41,7 @@ Route::get('/product', function () {
 Route::get('/persetujuan', function () {
     return view('admin.persetujuan');
 })->name('persetujuan');
+
 //halaman penjual
 Route::get('/jual', function () {
     return view('penjual.jual');
