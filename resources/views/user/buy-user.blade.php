@@ -7,40 +7,44 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <script src="{{ asset('js/beli.js') }}"></script>
 
-<section class="hero-search">
-    <div class="hero-content">
-        <h1>Lapaklama Fashion Centre</h1>
-        <p>Cari baju bekas terbaikmu dengan kualitas juara</p>
+<div class="beli-page">
+    
+    <header class="hero-search">
+        <div class="hero-content">
+            <span class="hero-badge"> Koleksi Fashion Terbaik</span>
+            
+            <h1>Lapaklama Fashion Centre</h1>
+            <p>Cari baju bekas terbaikmu dengan kualitas juara</p>
 
-        <div class="search-container">
-            <i class="bi bi-search search-icon"></i>
-            <input 
-                type="text" 
-                class="search-input" 
-                placeholder="Cari baju bekas, jaket vintage dan fashion lainnya..."
-                id="searchInput">
-            <button class="btn-search">Cari</button>
+            <div class="search-container">
+                <i class="bi bi-search search-icon"></i>
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    placeholder="Cari baju bekas, jaket vintage dan fashion lainnya..."
+                    id="searchInput">
+                <button class="btn-search">Cari</button>
+            </div>
         </div>
-    </div>
-</section>
+    </header>
 
-<section class="shop-container">
-    <div class="filters">
-        <div class="filter-group">
-            <select id="categoryFilter" class="custom-select">
-                <option value="all">Semua Kategori</option>
-                <option value="jaket">Jaket</option>
-                <option value="kemeja">Kemeja</option>
-                <option value="kaos">Kaos</option>
-                <option value="celana">Celana</option>
-                <option value="dress">Dress</option>
-            </select>
-        </div>
+    <section class="shop-container">
+        <div class="filters">
+            <div class="filter-group">
+                <select id="categoryFilter" class="custom-select">
+                    <option value="all">Semua Kategori</option>
+                    <option value="jaket">Jaket</option>
+                    <option value="kemeja">Kemeja</option>
+                    <option value="kaos">Kaos</option>
+                    <option value="celana">Celana</option>
+                    <option value="dress">Dress</option>
+                </select>
+            </div>
 
-        <div class="price-filter relative">
-            <button onclick="togglePriceCard()" class="price-btn">
-                <i class="bi bi-funnel"></i> Harga
-            </button>
+            <div class="price-filter relative">
+                <button onclick="togglePriceCard()" class="price-btn">
+                    <i class="bi bi-funnel"></i> Harga
+                </button>
 
             <div class="price-card" id="priceCard">
                 <p class="filter-title">Range Harga</p>
@@ -65,9 +69,7 @@
                 <p class="product-desc">Jaket rajut bergaya vintage dengan detail pita lucu, cocok untuk OOTD kasual.</p>
                 <div class="price-action">
                     <span class="price">Rp 120.000</span>
-                    <a href="{{ route('user.view-product') }}" class="btn-buy">
-                        <i class="bi bi-cart-plus"></i> Beli
-                    </a>
+                    <button class="btn-buy"><i class="bi bi-cart-plus"></i> Beli</button>
                 </div>
             </div>
         </div>
@@ -81,9 +83,7 @@
                 <p class="product-desc">Kemeja dengan kancing unik gaya oriental, bahan adem dan nyaman dipakai seharian.</p>
                 <div class="price-action">
                     <span class="price">Rp 75.000</span>
-                    <a href="{{ route('user.view-product') }}" class="btn-buy">
-                        <i class="bi bi-cart-plus"></i> Beli
-                    </a>
+                    <button class="btn-buy"><i class="bi bi-cart-plus"></i> Beli</button>
                 </div>
             </div>
         </div>
@@ -97,9 +97,7 @@
                 <p class="product-desc">Celana jeans potongan longgar yang trendy, cocok dipadukan dengan atasan apa saja.</p>
                 <div class="price-action">
                     <span class="price">Rp 90.000</span>
-                    <a href="{{ route('user.view-product') }}" class="btn-buy">
-                        <i class="bi bi-cart-plus"></i> Beli
-                    </a>
+                    <button class="btn-buy"><i class="bi bi-cart-plus"></i> Beli</button>
                 </div>
             </div>
         </div>
@@ -113,9 +111,7 @@
                 <p class="product-desc">Dress bermotif kotak-kotak klasik dengan sabuk kulit elegan untuk gaya retro.</p>
                 <div class="price-action">
                     <span class="price">Rp 140.000</span>
-                    <a href="{{ route('user.view-product') }}" class="btn-buy">
-                        <i class="bi bi-cart-plus"></i> Beli
-                    </a>
+                    <button class="btn-buy"><i class="bi bi-cart-plus"></i> Beli</button>
                 </div>
             </div>
         </div>
@@ -129,9 +125,7 @@
                 <p class="product-desc">Kaos katun sablon band vintage tahun 90an. Kondisi sangat baik tanpa noda.</p>
                 <div class="price-action">
                     <span class="price">Rp 45.000</span>
-                    <a href="{{ route('user.view-product') }}" class="btn-buy">
-                        <i class="bi bi-cart-plus"></i> Beli
-                    </a>
+                    <button class="btn-buy"><i class="bi bi-cart-plus"></i> Beli</button>
                 </div>
             </div>
         </div>
@@ -145,9 +139,7 @@
                 <p class="product-desc">Jaket kulit sintetis hitam dengan ritsleting asimetris. Tampil garang dan stylish.</p>
                 <div class="price-action">
                     <span class="price">Rp 150.000</span>
-                    <a href="{{ route('user.view-product') }}" class="btn-buy">
-                        <i class="bi bi-cart-plus"></i> Beli
-                    </a>
+                    <button class="btn-buy"><i class="bi bi-cart-plus"></i> Beli</button>
                 </div>
             </div>
         </div>
@@ -161,9 +153,7 @@
                 <p class="product-desc">Celana kargo dengan banyak kantong fungsional. Material kanvas tebal dan awet.</p>
                 <div class="price-action">
                     <span class="price">Rp 85.000</span>
-                    <a href="{{ route('user.view-product') }}" class="btn-buy">
-                        <i class="bi bi-cart-plus"></i> Beli
-                    </a>
+                    <button class="btn-buy"><i class="bi bi-cart-plus"></i> Beli</button>
                 </div>
             </div>
         </div>
@@ -177,9 +167,7 @@
                 <p class="product-desc">Kemeja bahan corduroy halus warna earth tone. Bisa dipakai sebagai outer/jaket tipis.</p>
                 <div class="price-action">
                     <span class="price">Rp 60.000</span>
-                    <a href="{{ route('user.view-product') }}" class="btn-buy">
-                        <i class="bi bi-cart-plus"></i> Beli
-                    </a>
+                    <button class="btn-buy"><i class="bi bi-cart-plus"></i> Beli</button>
                 </div>
             </div>
         </div>

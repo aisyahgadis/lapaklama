@@ -73,23 +73,28 @@ Route::get('/tracking', function () {
 Route::get('/success', function () {
     return view('penjual.succes');
 })->name('penjual.succes');
+
+Route::get('/success-jual', function () {
+    return view('penjual.success-jual');
+})->name('penjual.success-jual');
+
+Route::get('/view-product', function () {
+    return view('penjual.product');
+})->name('penjual.product');
+
+Route::get('/edit-product', function () {
+    return view('penjual.edit-product');
+})->name('penjual.edit-product');
+
 //halaman user sebelum login
-Route::get('/user/home', function () {
-    return view('user-login.home');
+Route::get('/user-login/home-login', function () {
+    return view('user-login.home-login');
 })->name('user-login.home');
 
-Route::get('/buy', function () {
-    return view('user-login.buy');
-})->name('user-login.buy');
+Route::get('/user-login/about', function () {
+    return view('user-login.about');
+})->name('user-login.about');
 
-Route::get('/recyle', function () {
-    return view('user-login.recyle');
-})->name('user-login.recyle');
-
-
-Route::get('/user/buy-user', function () {
-    return view('user-login.buy-user');
-})->name('user-login.buy-user');
 
 //halaman user sudah login
 Route::get('/user/home', function () {

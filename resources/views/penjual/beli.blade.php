@@ -7,40 +7,44 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <script src="{{ asset('js/beli.js') }}"></script>
 
-<section class="hero-search">
-    <div class="hero-content">
-        <h1>Lapaklama Fashion Centre</h1>
-        <p>Cari baju bekas terbaikmu dengan kualitas juara</p>
+<div class="beli-page">
+    
+    <header class="hero-search">
+        <div class="hero-content">
+            <span class="hero-badge">👕 Koleksi Fashion Terbaru</span>
+            
+            <h1>Lapaklama Fashion Centre</h1>
+            <p>Cari baju bekas terbaikmu dengan kualitas juara</p>
 
-        <div class="search-container">
-            <i class="bi bi-search search-icon"></i>
-            <input 
-                type="text" 
-                class="search-input" 
-                placeholder="Cari baju bekas, jaket vintage dan fashion lainnya..."
-                id="searchInput">
-            <button class="btn-search">Cari</button>
+            <div class="search-container">
+                <i class="bi bi-search search-icon"></i>
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    placeholder="Cari baju bekas, jaket vintage dan fashion lainnya..."
+                    id="searchInput">
+                <button class="btn-search">Cari</button>
+            </div>
         </div>
-    </div>
-</section>
+    </header>
 
-<section class="shop-container">
-    <div class="filters">
-        <div class="filter-group">
-            <select id="categoryFilter" class="custom-select">
-                <option value="all">Semua Kategori</option>
-                <option value="jaket">Jaket</option>
-                <option value="kemeja">Kemeja</option>
-                <option value="kaos">Kaos</option>
-                <option value="celana">Celana</option>
-                <option value="dress">Dress</option>
-            </select>
-        </div>
+    <section class="shop-container">
+        <div class="filters">
+            <div class="filter-group">
+                <select id="categoryFilter" class="custom-select">
+                    <option value="all">Semua Kategori</option>
+                    <option value="jaket">Jaket</option>
+                    <option value="kemeja">Kemeja</option>
+                    <option value="kaos">Kaos</option>
+                    <option value="celana">Celana</option>
+                    <option value="dress">Dress</option>
+                </select>
+            </div>
 
-        <div class="price-filter relative">
-            <button onclick="togglePriceCard()" class="price-btn">
-                <i class="bi bi-funnel"></i> Harga
-            </button>
+            <div class="price-filter relative">
+                <button onclick="togglePriceCard()" class="price-btn">
+                    <i class="bi bi-funnel"></i> Harga
+                </button>
 
             <div class="price-card" id="priceCard">
                 <p class="filter-title">Range Harga</p>

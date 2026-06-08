@@ -1,8 +1,39 @@
-@extends('layout.user')
-@section('title', 'Lapaklama - Home')
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lapaklama - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home-login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nav-user.css') }}">
+</head>
+<body>
 
-@section('content')
-<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+<!-- NAVBAR -->
+<nav class="navbar">
+    <!-- LOGO -->
+    <div class="logo">
+        <span class="logo-box">LapakLama</span>
+    </div>
+
+    <!-- MENU -->
+    <ul class="nav-menu">
+
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+
+    </ul>
+
+    <!-- LOGIN BUTTON -->
+    <div class="nav-icons">
+        <a href="{{ route('login') }}" class="btn-login">Login</a>
+    </div>
+</nav>
+
+<!-- CONTENT -->
 
 <section class="hero-section">
     <div class="hero-container">
@@ -184,7 +215,7 @@
             <div class="icon-box">🛍️</div>
             <h3>Beli Baju Berkualitas</h3>
             <p>Temukan baju bekas kualitas premium dengan harga terjangkau. Cari, pilih, dan beli dengan mudah!</p>
-            <a href="{{ route('baju') }}" class="btn btn-primary btn-full">Belanja Sekarang</a>
+            <a href="{{ route('baju') }}" class="btn btn-outline btn-full">Belanja Sekarang</a>
         </div>
         
         <div class="action-card">
@@ -229,4 +260,7 @@
         
     });
 </script>
-@endsection
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

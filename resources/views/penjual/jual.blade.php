@@ -90,8 +90,8 @@
 
         </div>
 
-        <button class="jual-btn">Jual Sekarang</button>
-
+        <a href="{{ route('penjual.success-jual') }}" class="jual-btn">Jual Sekarang</a>
+        </section>
     </form>
 
 </section>

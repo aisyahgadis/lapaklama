@@ -1,4 +1,4 @@
-@extends('layout.user')
+@extends('layout.web')
 @section('title','Daur Ulang')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/daurulang.css') }}">
@@ -54,7 +54,7 @@
                 <h2>Punya Baju Bekas yang Menumpuk?</h2>
                 <p>Jangan dibuang! Kirimkan pakaian lamamu ke Lapak Lama, tim desainer kami akan menyulapnya menjadi barang baru yang berguna sesuai keinginanmu.</p>
                 
-                <a href="{{ route('user.user-form') }}" class="btn-recycle">
+                <a href="{{ route('penjual.form') }}" class="btn-recycle">
                     Mulai Daur Ulang Bajuku Sekarang
                 </a>
             </div>

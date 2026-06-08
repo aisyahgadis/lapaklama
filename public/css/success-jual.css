@@ -1,0 +1,103 @@
+/* Styling Wrapper & Card */
+.success-wrapper {
+    display: grid;
+    place-items: center;
+    min-height: 80vh;
+    padding: 20px;
+    background-color: #f8fcfd; /* Latar belakang sedikit kebiruan agar card putih lebih menonjol */
+}
+
+.success-card {
+    background: #ffffff;
+    padding: 50px 40px;
+    border-radius: 20px; /* Sudut lebih membulat seperti di gambar */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04); /* Shadow lebih halus dan menyebar */
+    text-align: center;
+    max-width: 520px;
+    width: 100%;
+}
+
+/* Styling Ikon */
+.icon-circle {
+    width: 72px;
+    height: 72px;
+    background-color: #136f84; /* Warna Teal sesuai gambar */
+    color: #ffffff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 24px;
+}
+
+/* Styling Teks */
+.success-title {
+    color: #1a202c;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.success-message {
+    color: #718096;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 36px;
+}
+
+/* Styling Tombol (Grid Responsif) */
+.action-buttons {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr 1fr; /* Membagi dua tombol bersebelahan */
+}
+
+.btn {
+    text-decoration: none;
+    padding: 14px 24px;
+    border-radius: 50px; /* Bentuk pill (sangat membulat) sesuai gambar */
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    display: grid;
+    place-items: center;
+}
+
+.btn-primary {
+    background-color: #136f84;
+    color: #ffffff;
+    border: 2px solid #136f84;
+}
+
+.btn-primary:hover {
+    background-color: #0f5b6d;
+    border-color: #0f5b6d;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #136f84;
+    border: 2px solid #136f84;
+}
+
+.btn-outline:hover {
+    background-color: #0f5b6d;
+    border-color: #0f5b6d;
+    transform: translateY(-2px);
+}
+
+/* Responsivitas untuk layar HP */
+@media screen and (max-width: 480px) {
+    .action-buttons {
+        grid-template-columns: 1fr; /* Tombol otomatis susun atas-bawah di HP */
+    }
+    
+    .success-card {
+        padding: 40px 24px;
+    }
+    
+    .success-title {
+        font-size: 1.6rem;
+    }
+}

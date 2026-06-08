@@ -23,7 +23,7 @@
             <li><strong>Stok:</strong> Tersedia (24 pcs)</li>
         </ul>
 
-        <button class="btn-buy">Beli</button>
+        <a href="{{ route('user.chekout') }}" class="btn btn-primary">Beli</a>
     </div>
 </div>
 @endsection

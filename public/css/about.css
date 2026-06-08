@@ -1,0 +1,59 @@
+    .about-page-container {
+        padding: 60px 20px;
+        background-color: #fcfcfc;
+        min-height: 80vh; /* Memastikan halamannya cukup tinggi */
+    }
+    .about-hero {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    .about-title {
+        color: #2c3e50;
+        font-weight: 700;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+    .about-desc {
+        color: #555;
+        font-size: 1.1rem;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    .testimonial-section {
+        margin-top: 50px;
+    }
+    .testimonial-card {
+        background: #ffffff;
+        padding: 30px 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #f0f0f0;
+    }
+    .testimonial-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    .testi-icon {
+        font-size: 2.5rem;
+        color: #198754; 
+        margin-bottom: 15px;
+    }
+    .testi-text {
+        font-style: italic;
+        color: #6c757d;
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    .testi-name {
+        font-weight: 700;
+        color: #333;
+        font-size: 1.1rem;
+    }
+    .testi-role {
+        font-size: 0.85rem;
+        color: #999;
+    }

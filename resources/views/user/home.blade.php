@@ -2,7 +2,6 @@
 @section('title', 'Lapaklama - Home')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
 <section class="hero-section">
     <div class="hero-container">
@@ -14,8 +13,8 @@
                 Temukan gaya unik sambil membantu mengurangi limbah fashion dunia.
             </p>
             <div class="hero-buttons">
-                <a href="#" class="btn btn-primary">Mulai Sekarang</a>
-                <a href="#" class="btn btn-outline">Lihat Produk</a>
+                <a href="{{ route('user.recyle-user') }}" class="btn btn-primary">Mulai Sekarang</a>
+                <a href="{{ route('user.buy-user') }}" class="btn btn-outline">Lihat Produk</a>
             </div>
         </div>
 
@@ -43,7 +42,7 @@
 <section class="product-section">
     <div class="section-header">
         <h2 class="section-title">Produk Terbaru</h2>
-        <a href="#" class="see-more">Lihat Semua &rarr;</a>
+        <a href="{{ route('user.buy-user') }}" class="see-more">Lihat Semua &rarr;</a>
     </div>
 
     <div class="slider-wrapper">
@@ -69,7 +68,7 @@
                 <div class="card-img">
                     <img src="https://i.pinimg.com/webp/1200x/42/8d/fb/428dfb1e3d23fa5b022393a7c46199ac.webp" alt="Hoodie">
                     <div class="prod-overlay">
-                        <a href="{{ route('user-view-product') }}" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Quick View</a>
+                        <a href="{{ route('user.view-product') }}" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Quick View</a>
                     </div>
                 </div>
                 <div class="card-info">

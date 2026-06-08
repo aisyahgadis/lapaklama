@@ -22,9 +22,9 @@
     background: radial-gradient(circle at top right, #14859d, var(--primary-color));
     color: var(--white);
     text-align: center;
-    padding: 45px 20px;
+    padding: 65px 20px;
     margin-bottom: 50px;
-    overflow: hidden; /* Menahan elemen dekoratif agar tidak keluar jalur */
+    overflow: hidden; 
     box-shadow: 0 10px 30px rgba(11, 95, 117, 0.25);
 }
 

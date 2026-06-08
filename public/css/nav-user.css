@@ -97,6 +97,33 @@
         color:#0b5f75;
 
         }
+
+        /* LOGIN BUTTON */
+        .btn-login {
+            background-color: #ffffff;
+            color: #3990a6;
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-login:hover {
+            background-color: #ffffff;
+            color: #3990a6;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
         /* ABOUT SECTION */
         .about-section{
             padding: 60px 10%;

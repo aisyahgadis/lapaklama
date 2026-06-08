@@ -1,0 +1,128 @@
+/* Container Utama */
+.edit-dashboard {
+    max-width: 800px; /* Lebih kecil dari halaman list karena ini form */
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: sans-serif;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.dashboard-header h1 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.btn-back {
+    background-color: #6c757d;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-back:hover {
+    background-color: #5a6268;
+}
+
+/* Form Styling */
+.form-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Agar padding tidak merusak lebar */
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Preview Gambar Dummy */
+.image-preview-container {
+    margin-top: 10px;
+}
+
+.image-preview {
+    max-width: 200px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Tombol Submit */
+.btn-submit {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+/* --- Tambahan untuk Notifikasi Toast --- */
+.toast-notification {
+    visibility: hidden; /* Sembunyikan secara default */
+    min-width: 250px;
+    background-color: #28a745; /* Warna hijau sukses */
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1000;
+    right: 30px;
+    top: 30px; /* Muncul di kanan atas */
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+}
+
+/* Class ini akan ditambahkan via JavaScript saat form disubmit */
+.toast-notification.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}

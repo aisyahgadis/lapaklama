@@ -5,7 +5,9 @@
     <title>@yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/web.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nav-user.css') }}">
 </head>
 <script>
 
@@ -86,9 +88,10 @@ input.value="";
 
         <li><a href="{{ route('main') }}">Home</a></li>
         <li><a href="{{ route('jual') }}">Jual</a></li>
+        <li><a href="{{ route('penjual.product') }}">Product</a></li>
         <li><a href="{{ route('beli') }}">Beli</a></li>
         <li><a href="{{ route('daurulang') }}">Recycle</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="{{ route('user-login.about') }}">About</a></li>
 
     </ul>
 
@@ -122,6 +125,7 @@ input.value="";
     </div>
 
 </div>
+
         <div class="profile-menu">
 
         <i class="bi bi-person-circle profile-icon" onclick="toggleProfile()"></i>

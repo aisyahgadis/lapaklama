@@ -1,8 +1,6 @@
 @extends('layout.web')
 @section('title', 'Lapaklama - Home')
-
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
 <section class="hero-section">
     <div class="hero-container">
@@ -14,8 +12,8 @@
                 Temukan gaya unik sambil membantu mengurangi limbah fashion dunia.
             </p>
             <div class="hero-buttons">
-                <a href="#" class="btn btn-primary">Mulai Sekarang</a>
-                <a href="#" class="btn btn-outline">Lihat Produk</a>
+                <a href="{{ route('penjual.jual') }}" class="btn btn-primary">Mulai Sekarang</a>
+                <a href="{{ route('penjual.product') }}" class="btn btn-outline">Lihat Produk</a>
             </div>
         </div>
 
