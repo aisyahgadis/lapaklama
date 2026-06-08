@@ -88,7 +88,8 @@ input.value="";
         <li><a href="{{ route('user.home') }}">Home</a></li>
         <li><a href="{{ route('user.buy-user') }}">Beli</a></li>
         <li><a href="{{ route('user.recyle-user') }}">Recycle</a></li>
-        <li><a href="{{ route('user-login.about') }}">About</a></li>
+        <li><a href="{{ route('user.orders') }}">History</a></li>
+        <li><a href="{{ route('user.about-user') }}">About</a></li>
 
     </ul>
 
@@ -132,6 +133,24 @@ input.value="";
             <a href="/profile">
                 <i class="bi bi-pencil-square"></i> Edit Profile
             </a>
+
+            @if(Auth::check() && Auth::user()->jenis === 'penjual' && Auth::user()->status_penjual === 'approved')
+                <a href="{{ route('main') }}">
+                    <i class="bi bi-shop"></i> Toko Saya
+                </a>
+            @endif
+
+            @if(Auth::check() && Auth::user()->jenis === 'penjahit')
+                <a href="{{ route('penjahit.dashboard') }}">
+                    <i class="bi bi-scissors"></i> Dashboard Penjahit
+                </a>
+            @endif
+
+            @if(Auth::check() && Auth::user()->jenis === 'admin')
+                <a href="{{ route('admin.dashboard') }}">
+                    <i class="bi bi-speedometer2"></i> Admin Panel
+                </a>
+            @endif
 
             <a href="{{ route('logout') }}">
                 <i class="bi bi-box-arrow-right"></i> Logout

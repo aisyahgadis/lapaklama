@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,11 +21,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nama'      => 'required|string|max:255',
             'gambar'    => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
             'harga'     => 'required|numeric|min:0',
             'deskripsi' => 'required|string|min:10',
-            'kategori'  => 'nullable|string',
+            'kategori'  => 'required|string',
         ], [
+            'nama.required'       => 'Nama produk wajib diisi.',
             'gambar.required'    => 'Foto produk wajib diupload.',
             'gambar.image'       => 'File harus berupa gambar.',
             'gambar.max'         => 'Ukuran gambar maksimal 5MB.',
@@ -32,6 +35,7 @@ class ProductController extends Controller
             'harga.numeric'      => 'Harga harus berupa angka.',
             'deskripsi.required' => 'Deskripsi produk wajib diisi.',
             'deskripsi.min'      => 'Deskripsi minimal 10 karakter.',
+            'kategori.required'  => 'Kategori wajib dipilih.',
         ]);
 
         // Simpan gambar ke storage/app/public/products
@@ -39,6 +43,7 @@ class ProductController extends Controller
 
         Product::create([
             'user_id'   => Auth::id(),
+            'nama'      => $request->nama,
             'gambar'    => $path,
             'harga'     => $request->harga,
             'kategori'  => $request->kategori,
@@ -71,13 +76,17 @@ class ProductController extends Controller
         $product = Product::where('user_id', Auth::id())->findOrFail($id);
 
         $request->validate([
+            'nama'      => 'required|string|max:255',
             'harga'     => 'required|numeric|min:0',
             'deskripsi' => 'required|string|min:10',
+            'kategori'  => 'required|string',
             'gambar'    => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
         ]);
 
+        $product->nama = $request->nama;
         $product->harga = $request->harga;
         $product->deskripsi = $request->deskripsi;
+        $product->kategori = $request->kategori;
 
         if ($request->hasFile('gambar')) {
             $path = $request->file('gambar')->store('products', 'public');
@@ -159,6 +168,28 @@ class ProductController extends Controller
         return view('user.chekout', compact('product'));
     }
 
+    // 3.5. Memproses form Checkout (simpan session sementara)
+    public function processCheckout(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        if ($product->status !== 'tersedia') {
+            return redirect()->route('user.buy-user')->withErrors(['message' => 'Maaf, produk sudah tidak tersedia.']);
+        }
+
+        $request->validate([
+            'nama_penerima' => 'required|string',
+            'no_telp' => 'required|string',
+            'alamat' => 'required|string',
+            'metode_pembayaran' => 'required|string',
+        ]);
+
+        // Simpan data checkout ke session untuk diproses saat pembayaran
+        $request->session()->put('checkout_data_' . $id, $request->only(['nama_penerima', 'no_telp', 'alamat', 'metode_pembayaran']));
+
+        return redirect()->route('user.payment', $id);
+    }
+
     // 4. Menampilkan halaman Payment
     public function payment($id)
     {
@@ -172,7 +203,7 @@ class ProductController extends Controller
     }
 
     // 5. Memproses Pembayaran
-    public function prosesPembayaran($id)
+    public function prosesPembayaran(Request $request, $id)
     {
         $product = Product::findOrFail($id);
 
@@ -181,11 +212,40 @@ class ProductController extends Controller
             return redirect()->route('user.buy-user')->withErrors(['message' => 'Maaf, transaksi gagal karena produk sudah terjual.']);
         }
 
+        $request->validate([
+            'bukti_bayar' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
+        ]);
+
+        // Ambil data checkout dari session
+        $checkoutData = $request->session()->get('checkout_data_' . $id);
+
+        if (!$checkoutData) {
+            return redirect()->route('user.checkout', $id)->withErrors(['message' => 'Sesi checkout berakhir. Silakan isi kembali data pengiriman.']);
+        }
+
+        // Simpan bukti bayar
+        $path = $request->file('bukti_bayar')->store('payments', 'public');
+
+        // Buat Order record
+        Order::create([
+            'user_id' => Auth::id(),
+            'product_id' => $product->id,
+            'alamat' => $checkoutData['alamat'],
+            'status' => 'menunggu', // Menunggu persetujuan penjual
+            'nama_penerima' => $checkoutData['nama_penerima'],
+            'no_telp' => $checkoutData['no_telp'],
+            'metode_pembayaran' => $checkoutData['metode_pembayaran'],
+            'bukti_bayar' => $path,
+        ]);
+
+        // Hapus session checkout
+        $request->session()->forget('checkout_data_' . $id);
+
         // Update status produk menjadi 'terjual' di database
         $product->status = 'terjual';
         $product->save();
 
-        // Kembali ke halaman katalog dengan pesan sukses
-        return redirect()->route('user.buy-user')->with('success', 'Pembayaran berhasil! Barang segera dikirim.');
+        // Kembali ke halaman lacak dengan pesan sukses
+        return redirect()->route('user.orders')->with('success', 'Pembayaran berhasil! Menunggu konfirmasi penjual.');
     }
 }

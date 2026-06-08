@@ -9,7 +9,7 @@
     <h1>Jual Baju Bekasmu</h1>
     <p>Upload baju yang ingin kamu jual dan temukan pembeli dengan mudah.</p>
 
-    <form class="jual-form" action="{{ route('penjual.product') }}" method="POST" enctype="multipart/form-data">
+    <form class="jual-form" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf <div class="form-group">
             <label>Foto Produk</label>
             <input type="file" name="gambar" id="imageUpload" accept="image/*" required>
@@ -19,6 +19,23 @@
                 <div class="image-preview" id="imagePreview"></div>
                 <button type="button" class="slide-btn right" onclick="slideRight()">❯</button>
             </div>
+        </div>
+
+        <div class="form-group">
+            <label>Nama Produk</label>
+            <input type="text" name="nama" placeholder="Contoh: Jaket Denim Vintage" required>
+        </div>
+
+        <div class="form-group">
+            <label>Kategori</label>
+            <select name="kategori" required>
+                <option value="">Pilih Kategori</option>
+                <option value="jaket">Jaket</option>
+                <option value="kemeja">Kemeja</option>
+                <option value="kaos">Kaos</option>
+                <option value="celana">Celana</option>
+                <option value="dress">Dress</option>
+            </select>
         </div>
 
         <div class="form-group">

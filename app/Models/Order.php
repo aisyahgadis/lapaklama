@@ -11,6 +11,13 @@ class Order extends Model
         'product_id',
         'alamat',
         'status',
+        'nama_penerima',
+        'no_telp',
+        'metode_pembayaran',
+        'bukti_bayar',
+        'resi',
+        'rating',
+        'review',
     ];
 
     // -------------------------------------------------------

@@ -13,6 +13,9 @@ class Recycle extends Model
         'deskripsi',
         'harga',
         'status',
+        'kategori',
+        'alamat_pengiriman',
+        'kode_resi',
     ];
 
     // -------------------------------------------------------

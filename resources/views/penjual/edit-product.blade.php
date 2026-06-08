@@ -3,51 +3,52 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/seller-edit-product.css') }}">
 
-{{-- Membuat Dummy Data langsung di Blade --}}
-@php
-    $dummyProduct = (object)[
-        'id' => 1,
-        'name' => 'Sepatu Sneakers Pria',
-        'price' => 250000,
-        'description' => 'Sepatu sneakers pria kualitas premium, nyaman dipakai untuk sehari-hari maupun olahraga ringan. Tersedia dalam ukuran 40-44.',
-        'image' => 'https://via.placeholder.com/250x200/eee/333?text=Sepatu+Sneakers'
-    ];
-@endphp
-
 <div class="edit-dashboard">
     
     <div class="dashboard-header">
         <h1>Edit Produk</h1>
-        <a href="#" class="btn-back" onclick="alert('Kembali ke halaman daftar produk')">Kembali</a>
+        <a href="{{ route('penjual.product') }}" class="btn-back">Kembali</a>
     </div>
 
     <div class="form-card">
-        {{-- Panggil fungsi JS showNotification() saat tombol submit ditekan --}}
-        <form action="#" onsubmit="showNotification(event)">
-            <input type="hidden" name="_method" value="PUT">
+        <form action="{{ route('penjual.update-product', $product->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
 
             <div class="form-group">
-                <label for="name">Nama Produk</label>
-                <input type="text" id="name" name="name" class="form-control" value="{{ $dummyProduct->name }}" required>
+                <label for="nama">Nama Produk</label>
+                <input type="text" id="nama" name="nama" class="form-control" value="{{ $product->nama }}" required>
             </div>
 
             <div class="form-group">
-                <label for="price">Harga (Rp)</label>
-                <input type="number" id="price" name="price" class="form-control" value="{{ $dummyProduct->price }}" required>
+                <label for="kategori">Kategori</label>
+                <select id="kategori" name="kategori" class="form-control" required>
+                    <option value="">Pilih Kategori</option>
+                    <option value="jaket" {{ $product->kategori == 'jaket' ? 'selected' : '' }}>Jaket</option>
+                    <option value="kemeja" {{ $product->kategori == 'kemeja' ? 'selected' : '' }}>Kemeja</option>
+                    <option value="kaos" {{ $product->kategori == 'kaos' ? 'selected' : '' }}>Kaos</option>
+                    <option value="celana" {{ $product->kategori == 'celana' ? 'selected' : '' }}>Celana</option>
+                    <option value="dress" {{ $product->kategori == 'dress' ? 'selected' : '' }}>Dress</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <label for="description">Deskripsi Produk</label>
-                <textarea id="description" name="description" class="form-control" required>{{ $dummyProduct->description }}</textarea>
+                <label for="harga">Harga (Rp)</label>
+                <input type="number" id="harga" name="harga" class="form-control" value="{{ $product->harga }}" required>
             </div>
 
             <div class="form-group">
-                <label for="image">Ganti Foto Produk (Opsional)</label>
-                <input type="file" id="image" name="image" class="form-control" accept="image/*">
+                <label for="deskripsi">Deskripsi Produk</label>
+                <textarea id="deskripsi" name="deskripsi" class="form-control" required>{{ $product->deskripsi }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="gambar">Ganti Foto Produk (Opsional)</label>
+                <input type="file" id="gambar" name="gambar" class="form-control" accept="image/*">
                 
                 <div class="image-preview-container">
                     <p style="font-size: 0.85rem; color: #666; margin-bottom: 5px;">Foto saat ini:</p>
-                    <img src="{{ $dummyProduct->image }}" alt="Preview" class="image-preview">
+                    <img src="{{ asset('storage/' . $product->gambar) }}" alt="Preview" class="image-preview">
                 </div>
             </div>
 
@@ -56,29 +57,4 @@
     </div>
 
 </div>
-
-{{-- Elemen Notifikasi --}}
-<div id="success-toast" class="toast-notification">
-    Data produk berhasil disimpan!
-</div>
-
-{{-- Script JavaScript untuk memunculkan notifikasi --}}
-<script>
-    function showNotification(event) {
-        // Mencegah form melakukan refresh halaman (karena masih dummy)
-        event.preventDefault(); 
-
-        // Ambil elemen toast berdasarkan ID
-        var toast = document.getElementById("success-toast");
-
-        // Tambahkan class 'show' agar CSS animasinya berjalan dan notif muncul
-        toast.classList.add("show");
-
-        // Sembunyikan kembali notifikasi setelah 3 detik (3000 milidetik)
-        setTimeout(function(){ 
-            toast.classList.remove("show"); 
-        }, 3000);
-    }
-</script>
-
 @endsection

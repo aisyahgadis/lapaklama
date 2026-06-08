@@ -30,7 +30,7 @@
             <h2>Mulai Project Daur Ulangmu</h2>
             <p class="subtitle">Pilih kreasi populer atau tentukan sendiri ide daur ulang pakaianmu.</p>
 
-            <form action="#" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('recycle.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 
                 <!-- INPUT 1: TEMPLATE KREASI POPULER (Ide Gabungan) -->
@@ -82,8 +82,10 @@
                 <!-- Tombol Submit -->
                 <button type="submit" class="btn-submit">
                     Kirim Ide Daur Ulang <i class="bi bi-arrow-right ms-2"></i>
-                    <a href="{{ route('penjual.tracking') }}" class="btn-submit">Lihat Tracking</a>
                 </button>
+                <div style="margin-top: 15px; text-align: center;">
+                    <a href="{{ route('penjual.orders') }}" style="color: #0b5f75; text-decoration: underline;">Lihat History</a>
+                </div>
             </form>
         </div>
 
