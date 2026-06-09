@@ -12,7 +12,6 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $budi = User::where('email', 'budi@lapaklama.com')->first();
-        $siti = User::where('email', 'siti@lapaklama.com')->first();
  
         // Produk milik Budi
         Product::create([
@@ -36,21 +35,6 @@ class ProductSeeder extends Seeder
             'status'    => 'terjual',
             'deskripsi' => 'Kaos polos putih, ukuran S. Sudah dicuci bersih.',
         ]);
- 
-        // Produk milik Siti
-        Product::create([
-            'user_id'   => $siti->id,
-            'gambar'    => 'produk/dress-siti.jpg',
-            'harga'     => 60000,
-            'status'    => 'tersedia',
-            'deskripsi' => 'Dress batik modern, kondisi bagus, ukuran M. Hanya dipakai 1x.',
-        ]);
-        Product::create([
-            'user_id'   => $siti->id,
-            'gambar'    => 'produk/blouse-siti.jpg',
-            'harga'     => 35000,
-            'status'    => 'tersedia',
-            'deskripsi' => 'Blouse putih polos lengan panjang, ukuran S. Kondisi mulus.',
-        ]);
+
     }
 }

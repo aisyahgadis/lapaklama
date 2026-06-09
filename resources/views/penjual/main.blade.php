@@ -189,7 +189,7 @@
             <div class="icon-box">🛍️</div>
             <h3>Beli Baju Berkualitas</h3>
             <p>Temukan baju bekas kualitas premium dengan harga terjangkau. Cari, pilih, dan beli dengan mudah!</p>
-            <a href="{{ route('baju') }}" class="btn btn-outline btn-full">Belanja Sekarang</a>
+            <a href="{{ route('beli') }}" class="btn btn-outline btn-full">Belanja Sekarang</a>
         </div>
         
         <div class="action-card">

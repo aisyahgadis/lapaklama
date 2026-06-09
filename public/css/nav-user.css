@@ -15,15 +15,25 @@
         /* NAVBAR */
 
         .navbar{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:15px 40px;
+            background:#3990a6;
+            border-bottom:1px solid #eee;
 
-        display:flex;
-        align-items:center;   /* ini yang bikin semua rata */
-        justify-content:space-between;
-        padding:15px 40px;
-        background:#3990a6;
-        border-bottom:1px solid #eee;
-
+            /* tambahan sticky */
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            z-index:1000;
         }
+
+        .content{
+            padding-top: 65px; /* sesuai tinggi navbar kamu */
+        }
+
         /* LOGO */
 
         .logo{
