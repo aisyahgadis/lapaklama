@@ -5,25 +5,24 @@
 
 <div class="product-container">
     <div class="product-image">
-        <img src="https://via.placeholder.com/500x600?text=Gambar+Baju" alt="Kemeja Flanel Dummy">
+        <img src="{{ asset('storage/' . $product->gambar) }}" alt="Produk">
     </div>
 
     <div class="product-details">
-        <h1 class="product-title">Kemeja Flanel Kotak-Kotak (Dummy)</h1>
-        <p class="product-price">Rp 150.000</p>
+        <h1 class="product-title">{{ $product->nama }}</h1>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 15px;">Kategori: {{ ucfirst($product->kategori ?? 'Umum') }}</p>
+        <p class="product-price">Rp {{ number_format($product->harga, 0, ',', '.') }}</p>
         
         <p class="product-description">
-            Kemeja flanel premium dengan bahan yang nyaman dan menyerap keringat. Cocok digunakan untuk hangout atau acara kasual.
+            {{ $product->deskripsi }}
         </p>
 
         <ul class="product-specs">
-            <li><strong>Bahan:</strong> Katun Flanel</li>
-            <li><strong>Ukuran:</strong> M, L, XL</li>
-            <li><strong>Warna:</strong> Merah Hitam</li>
-            <li><strong>Stok:</strong> Tersedia (24 pcs)</li>
+            <li><strong>Status:</strong> {{ $product->status === 'tersedia' ? 'Tersedia' : 'Terjual' }}</li>
+            <li><strong>Kategori:</strong> {{ $product->kategori }}</li>
         </ul>
 
-        <a href="{{ route('user.chekout') }}" class="btn btn-primary">Beli</a>
+        <a href="{{ route('user.checkout', $product->id) }}" class="btn btn-primary">Beli Sekarang</a>
     </div>
 </div>
 @endsection

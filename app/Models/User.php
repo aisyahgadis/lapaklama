@@ -14,6 +14,7 @@ class User extends Authenticatable
         'email',
         'password',
         'jenis', // admin | penjual | penjahit | pembeli
+        'status_penjual', // tidak_ada | pending | approved
         'nama_toko',
         'no_hp',
         'alamat_toko',
@@ -58,6 +59,7 @@ class User extends Authenticatable
 
     public function isAdmin(): bool    { return $this->jenis === 'admin'; }
     public function isPenjual(): bool  { return $this->jenis === 'penjual'; }
+    public function isApprovedPenjual(): bool { return $this->jenis === 'penjual' && $this->status_penjual === 'approved'; }
     public function isPenjahit(): bool { return $this->jenis === 'penjahit'; }
     public function isPembeli(): bool  { return $this->jenis === 'pembeli'; }
 }

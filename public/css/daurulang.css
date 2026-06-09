@@ -153,7 +153,7 @@
 /* Katalog Grid */
 .catalog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-bottom: 60px;
 }
@@ -161,10 +161,12 @@
 /* Card Produk */
 .product-card {
     background: var(--white);
-    border-radius: 15px;
+    border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .product-card:hover {
@@ -180,30 +182,43 @@
 }
 
 .product-info {
-    padding: 20px;
+    padding: 25px;
 }
 
 .product-tag {
     background-color: rgba(11, 95, 117, 0.1);
     color: var(--primary-color);
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 600;
     display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .product-title {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
     font-weight: 600;
 }
 
 .product-desc {
     font-size: 0.9rem;
     color: var(--text-muted);
-    line-height: 1.4;
+    line-height: 1.5;
+}
+
+/* Responsif */
+@media (max-width: 992px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* CTA Section (Mencoba Daur Ulang) */

@@ -34,8 +34,12 @@
         </ul>
     </div>
 
-    <form action="{{ route('user.payment.process', $product->id) }}" method="POST" style="margin-top: 20px;">
+    <form action="{{ route('user.payment.process', $product->id) }}" method="POST" enctype="multipart/form-data" style="margin-top: 20px;">
         @csrf
+        <div style="margin-bottom: 15px;">
+            <label for="bukti_bayar" style="display: block; font-weight: bold; margin-bottom: 5px;">Upload Bukti Pembayaran:</label>
+            <input type="file" name="bukti_bayar" id="bukti_bayar" accept="image/*" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+        </div>
         <button type="submit" class="btn-confirm" onclick="return confirm('Apakah Anda yakin sudah melakukan transfer? Pesanan akan segera diproses.')" style="width: 100%; border: none; cursor: pointer;">
             Saya Sudah Bayar
         </button>

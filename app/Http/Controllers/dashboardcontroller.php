@@ -11,25 +11,18 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // 1. Mengambil data untuk Statistik (Cards)
-        $penjualMenunggu = User::where('jenis', 'penjual')->count();
+        // Data untuk stat cards
+        $penjualMenunggu = User::where('jenis', 'penjual')->where('status_penjual', 'pending')->count();
         $menungguPenjahit = Recycle::where('status', 'menunggu_assign')->count();
         $penjahitAktif = User::where('jenis', 'penjahit')->count();
         $totalProduk = Product::count();
-
-        // 2. Mengambil data untuk List Tabel (Dibatasi 5 data terbaru agar rapi)
-        $permintaanToko = User::where('jenis', 'penjual')
-                            ->orderBy('created_at', 'desc')
-                            ->take(5)
-                            ->get();
-
-        $antreanProduksi = Recycle::where('status', 'menunggu_assign')
-                            ->with('user')
-                            ->orderBy('created_at', 'desc')
-                            ->take(5)
-                            ->get();
-
-        // 3. Mengirim variabel ke file blade
+        
+        // Data untuk list permintaan toko
+        $permintaanToko = User::where('jenis', 'penjual')->where('status_penjual', 'pending')->orderBy('created_at', 'desc')->take(5)->get();
+        
+        // Data untuk antrean produksi
+        $antreanProduksi = Recycle::where('status', 'menunggu_assign')->orderBy('created_at', 'desc')->take(5)->get();
+        
         return view('admin.dashboard', compact(
             'penjualMenunggu',
             'menungguPenjahit',

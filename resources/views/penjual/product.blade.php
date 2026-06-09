@@ -23,20 +23,21 @@
         @forelse ($products as $product)
             <div class="product-card">
                 {{-- Gambar Produk --}}
-                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image" onerror="this.src='https://via.placeholder.com/250x200?text=No+Image'">
+                <img src="{{ asset('storage/' . $product->gambar) }}" alt="Produk" class="product-image" onerror="this.src='https://via.placeholder.com/250x200?text=No+Image'">
                 
                 <div class="product-info">
-                    <h3 class="product-title">{{ $product->name }}</h3>
-                    <div class="product-price">Rp {{ number_format($product->price, 0, ',', '.') }}</div>
-                    <div class="product-stats">Terjual: {{ $product->sold_qty }} pcs</div>
+                    <h3 class="product-title">{{ $product->nama }}</h3>
+                    <div class="product-price">Rp {{ number_format($product->harga, 0, ',', '.') }}</div>
+                    <div class="product-stats">Kategori: {{ $product->kategori ?? 'Umum' }}</div>
+                    <div class="product-stats">Status: {{ $product->status === 'tersedia' ? 'Tersedia' : 'Terjual' }}</div>
                 </div>
 
                 <div class="product-actions">
                     {{-- Tombol Edit --}}
-                    <a href="{{ route('products.edit', $product->id) }}" class="btn-action btn-edit">Edit</a>
+                    <a href="{{ route('penjual.edit-product', $product->id) }}" class="btn-action btn-edit">Edit</a>
                     
                     {{-- Tombol Hapus (Harus menggunakan Form agar metodenya DELETE) --}}
-                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="form-delete" onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?');">
+                    <form action="{{ route('penjual.destroy-product', $product->id) }}" method="POST" class="form-delete" onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn-action btn-delete">Hapus</button>

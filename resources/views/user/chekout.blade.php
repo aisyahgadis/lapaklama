@@ -3,7 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/checkout.css') }}">
 
-<form action="{{ route('user.payment', $product->id) }}" method="POST" style="display: contents;">
+<form action="{{ route('user.checkout.process', $product->id) }}" method="POST" style="display: contents;">
     @csrf <div class="checkout-container">
         
         <div class="checkout-form">

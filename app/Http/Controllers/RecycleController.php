@@ -22,17 +22,45 @@ class RecycleController extends Controller
             'description.min'      => 'Deskripsi minimal 10 karakter.',
         ]);
 
+        // Pastikan user terautentikasi
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        $user = Auth::user();
+        
         // Simpan gambar
         $path = $request->file('image')->store('recycles', 'public');
 
-        Recycle::create([
-            'user_id'   => Auth::id(),
+        // Simpan recycle dengan user_id jelas
+        $recycle = Recycle::create([
+            'user_id'   => $user->id, // Jangan pake Auth::id(), pake $user->id secara eksplisit
             'gambar'    => $path,
             'deskripsi' => $request->description,
+            'kategori'  => $request->category,
             'status'    => 'menunggu_assign',
         ]);
 
-        return redirect()->route('penjual.succes')->with('success', 'Ide daur ulang berhasil dikirim!');
+        // Debug: log user info
+        \Log::info('Recycle Submitted', [
+            'user_id' => $user->id,
+            'nama' => $user->nama,
+            'jenis' => $user->jenis,
+            'status_penjual' => $user->status_penjual ?? 'n/a',
+            'isApprovedPenjual' => $user->isApprovedPenjual(),
+        ]);
+
+        // Redirect ke halaman sukses sesuai jenis user
+        if ($user->isPembeli()) {
+            // User pembeli ke user-succes
+            return redirect()->route('user.user-succes')->with('success', 'Ide daur ulang berhasil dikirim!');
+        } elseif ($user->isApprovedPenjual()) {
+            // Penjual approved ke penjual.succes
+            return redirect()->route('penjual.succes')->with('success', 'Ide daur ulang berhasil dikirim!');
+        } else {
+            // User lain ke user-succes
+            return redirect()->route('user.user-succes')->with('success', 'Ide daur ulang berhasil dikirim!');
+        }
     }
 
     // Halaman tracking daur ulang
@@ -53,5 +81,28 @@ class RecycleController extends Controller
                          ->first();
 
         return view('user.user-tracking', compact('recycle'));
+    }
+
+    // Update Alamat dan Resi
+    public function updateResi(Request $request, $id)
+    {
+        $request->validate([
+            'alamat_pengiriman' => 'nullable|string',
+            'kode_resi' => 'nullable|string',
+        ]);
+
+        $recycle = Recycle::where('user_id', Auth::id())->findOrFail($id);
+        
+        if ($request->filled('alamat_pengiriman')) {
+            $recycle->alamat_pengiriman = $request->alamat_pengiriman;
+        }
+        
+        if ($request->filled('kode_resi')) {
+            $recycle->kode_resi = $request->kode_resi;
+        }
+
+        $recycle->save();
+
+        return redirect()->back()->with('success', 'Data berhasil diperbarui!');
     }
 }

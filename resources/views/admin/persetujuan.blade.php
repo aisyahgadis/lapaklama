@@ -28,9 +28,16 @@
                         <td>{{ $penjual->nama_toko }}</td>
                         <td>{{ $penjual->nama }}</td>
                         <td>{{ $penjual->created_at->format('d M Y') }}</td>
-                        <td class="action-buttons">
-                            <button class="btn btn-setujui">Setujui</button>
-                            <button class="btn" style="background-color: #e53e3e; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px; margin-left: 8px;">Tolak</button>
+                        <td class="action-buttons" style="display: flex; gap: 8px;">
+                            <form action="{{ route('admin.user.approve', $penjual->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-setujui" onclick="return confirm('Yakin ingin menyetujui pendaftaran ini?')">Setujui</button>
+                            </form>
+                            <form action="{{ route('admin.user.destroy', $penjual->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn" style="background-color: #e53e3e; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px;" onclick="return confirm('Yakin ingin menolak dan menghapus pendaftar ini?')">Tolak</button>
+                            </form>
                         </td>
                     </tr>
                 @empty
@@ -44,4 +51,11 @@
         </table>
     </div>
 </div>
+
+@if(session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+@endif
+
 @endsection

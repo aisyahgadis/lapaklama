@@ -1,4 +1,4 @@
-@extends('layout.web')
+@extends('layout.user')
 
 @section('title','Katalog Baju')
 
@@ -62,24 +62,19 @@
                         <img src="{{ asset('storage/' . $product->gambar) }}" alt="Gambar Produk">
                     </div>
                     <div class="product-info">
-                        <h3>Produk Fashion #{{ $product->id }}</h3> 
-                        <p class="product-desc">{{ $product->deskripsi }}</p>
+                        <h3>{{ $product->nama }}</h3>
+                        <p class="product-desc">{{ Str::limit($product->deskripsi, 80) }}</p>
                         
-                        <div class="price-action">
-                            <span class="price">Rp {{ number_format($product->harga, 0, ',', '.') }}</span>
-                            
-                            <a href="{{ route('user.view-product', $product->id) }}" class="btn-buy" style="text-decoration: none;">
-                                <i class="bi bi-eye"></i> Lihat Detail
-                            </a>
-                        </div>
-                            
-                            <form action="{{ route('user.buy-user', $product->id) }}" method="POST" style="margin:0;">
-                                @csrf
-                                <button type="submit" class="btn-buy" onclick="return confirm('Apakah kamu yakin ingin membeli barang ini?')">
+                        <div class="product-actions">
+                            <div class="price">Rp {{ number_format($product->harga, 0, ',', '.') }}</div>
+                            <div class="buttons-group">
+                                <a href="{{ route('user.view-product', $product->id) }}" class="btn-detail">
+                                    <i class="bi bi-eye"></i> Detail
+                                </a>
+                                <a href="{{ route('user.checkout', $product->id) }}" class="btn-buy" onclick="return confirm('Apakah kamu yakin ingin melanjutkan checkout barang ini?')">
                                     <i class="bi bi-cart-plus"></i> Beli
-                                </button>
-                            </form>
-                            
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

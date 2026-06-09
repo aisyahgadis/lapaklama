@@ -41,72 +41,31 @@
 <section class="product-section">
     <div class="section-header">
         <h2 class="section-title">Produk Terbaru</h2>
-        <a href="#" class="see-more">Lihat Semua &rarr;</a>
+        <a href="{{ route('penjual.product') }}" class="see-more">Lihat Semua &rarr;</a>
     </div>
 
     <div class="slider-wrapper">
         <button class="slider-nav left">&#10094;</button>
         
         <div class="product-slider">
-            <div class="product-card">
-                <div class="card-img">
-                    <img src="https://i.pinimg.com/webp/1200x/42/8d/fb/428dfb1e3d23fa5b022393a7c46199ac.webp" alt="T-shirt">
-                    <div class="prod-overlay">
-                        <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Quick View</a>
+            @forelse($products as $product)
+                <div class="product-card">
+                    <div class="card-img">
+                        <img src="{{ asset('storage/' . $product->gambar) }}" alt="{{ $product->deskripsi }}" onerror="this.src='https://i.pinimg.com/webp/1200x/42/8d/fb/428dfb1e3d23fa5b022393a7c46199ac.webp'">
+                        <div class="prod-overlay">
+                            <a href="{{ route('user.view-product', $product->id) }}" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Lihat Detail</a>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <span class="prod-category">{{ $product->kategori ?? 'Produk' }}</span>
+                        <h3>{{ $product->nama }}</h3>
+                        <p class="prod-desc">{{ Str::limit($product->deskripsi, 80) }}</p>
+                        <p class="price">Rp {{ number_format($product->harga, 0, ',', '.') }}</p>
                     </div>
                 </div>
-                <div class="card-info">
-                    <span class="prod-category">Atasan Pria</span>
-                    <h3>Vintage T-shirt</h3>
-                    <p class="prod-desc">Bahan katun premium yang adem. Kondisi 90% mulus tanpa cacat.</p>
-                    <p class="price">Rp 45.000</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="card-img">
-                    <img src="https://i.pinimg.com/webp/1200x/42/8d/fb/428dfb1e3d23fa5b022393a7c46199ac.webp" alt="Hoodie">
-                    <div class="prod-overlay">
-                        <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Quick View</a>
-                    </div>
-                </div>
-                <div class="card-info">
-                    <span class="prod-category">Outerwear</span>
-                    <h3>Oversize Hoodie</h3>
-                    <p class="prod-desc">Hoodie tebal warna cokelat dengan gaya retro. Cocok untuk cuaca dingin.</p>
-                    <p class="price">Rp 70.000</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="card-img">
-                    <img src="https://i.pinimg.com/webp/1200x/42/8d/fb/428dfb1e3d23fa5b022393a7c46199ac.webp" alt="Jacket">
-                    <div class="prod-overlay">
-                        <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Quick View</a>
-                    </div>
-                </div>
-                <div class="card-info">
-                    <span class="prod-category">Upcycle Collection</span>
-                    <h3>Upcycle Denim</h3>
-                    <p class="prod-desc">Jaket denim hasil rework dengan detail patchwork eksklusif.</p>
-                    <p class="price">Rp 120.000</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="card-img">
-                    <img src="https://i.pinimg.com/webp/1200x/42/8d/fb/428dfb1e3d23fa5b022393a7c46199ac.webp" alt="Shirt">
-                    <div class="prod-overlay">
-                        <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Quick View</a>
-                    </div>
-                </div>
-                <div class="card-info">
-                    <span class="prod-category">Kemeja</span>
-                    <h3>Patchwork Shirt</h3>
-                    <p class="prod-desc">Kemeja flanel lengan panjang dengan motif gabungan yang unik.</p>
-                    <p class="price">Rp 95.000</p>
-                </div>
-            </div>
+            @empty
+                <p style="grid-column: 1 / -1; text-align: center; padding: 40px;">Belum ada produk tersedia.</p>
+            @endforelse
         </div>
 
         <button class="slider-nav right">&#10095;</button>
@@ -189,7 +148,7 @@
             <div class="icon-box">🛍️</div>
             <h3>Beli Baju Berkualitas</h3>
             <p>Temukan baju bekas kualitas premium dengan harga terjangkau. Cari, pilih, dan beli dengan mudah!</p>
-            <a href="{{ route('beli') }}" class="btn btn-outline btn-full">Belanja Sekarang</a>
+            <a href="{{ route('user.buy-user') }}" class="btn btn-outline btn-full">Belanja Sekarang</a>
         </div>
         
         <div class="action-card">

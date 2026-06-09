@@ -68,7 +68,12 @@ class SessionController extends Controller
             if ($user->jenis === 'pembeli') {
                 return redirect()->intended('/user/home');
             } elseif ($user->jenis === 'penjual') {
+                if ($user->status_penjual === 'pending') {
+                    return redirect()->intended('/user/home')->withErrors(['message' => 'Akun Penjual Anda masih dalam proses persetujuan oleh Admin.']);
+                }
                 return redirect()->intended('/main');
+            } elseif ($user->jenis === 'penjahit') {
+                return redirect()->intended('/penjahit/dashboard');
             }
         }
 
@@ -118,11 +123,13 @@ class SessionController extends Controller
             $dataUser['nama_toko'] = null;
             $dataUser['no_hp'] = null;
             $dataUser['alamat_toko'] = null;
+            $dataUser['status_penjual'] = 'tidak_ada';
         } else {
             $dataUser['nama'] = $request->nama_toko; // Gunakan nama toko sebagai nama juga
             $dataUser['nama_toko'] = $request->nama_toko;
             $dataUser['no_hp'] = $request->no_hp;
             $dataUser['alamat_toko'] = $request->alamat_toko;
+            $dataUser['status_penjual'] = 'pending';
         }
 
         $user = User::create($dataUser);
@@ -133,7 +140,7 @@ class SessionController extends Controller
         if ($user->jenis === 'pembeli') {
             return redirect()->to('/user/home')->with('success', 'Pendaftaran berhasil!');
         } else {
-            return redirect()->to('/main')->with('success', 'Pendaftaran berhasil!');
+            return redirect()->to('/user/home')->with('success', 'Pendaftaran berhasil! Akun Anda sedang menunggu persetujuan Admin.');
         }
     }
 
