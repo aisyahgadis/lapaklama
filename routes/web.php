@@ -49,17 +49,21 @@ Route::middleware(['auth'])->group(function () {
     // =====================================================
     // ADMIN ROUTES
     // =====================================================
-    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/user', [AdminController::class, 'users'])->name('admin.user');
-    Route::post('/admin/user/{id}/approve', [AdminController::class, 'approveSeller'])->name('admin.user.approve');
-    Route::delete('/admin/user/{id}', [AdminController::class, 'destroyUser'])->name('admin.user.destroy');
-    Route::get('/admin/product', [ProductController::class, 'index'])->name('admin.product');
-    Route::get('/admin/persetujuan', [AdminController::class, 'persetujuan'])->name('admin.persetujuan');
-    Route::post('/admin/persetujuan/pilih', [PersetujuanController::class, 'pilihPenjahit'])->name('admin.persetujuan.pilih');
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+        Route::get('/admin/user', [AdminController::class, 'users'])->name('admin.user');
+        Route::get('/admin/penjahit/create', [AdminController::class, 'createPenjahit'])->name('admin.penjahit.create');
+        Route::post('/admin/penjahit/store', [AdminController::class, 'storePenjahit'])->name('admin.penjahit.store');
+        Route::post('/admin/user/{id}/approve', [AdminController::class, 'approveSeller'])->name('admin.user.approve');
+        Route::delete('/admin/user/{id}', [AdminController::class, 'destroyUser'])->name('admin.user.destroy');
+        Route::get('/admin/product', [ProductController::class, 'index'])->name('admin.product');
+        Route::get('/admin/persetujuan', [AdminController::class, 'persetujuan'])->name('admin.persetujuan');
+        Route::post('/admin/persetujuan/pilih', [PersetujuanController::class, 'pilihPenjahit'])->name('admin.persetujuan.pilih');
 
-    Route::get('/admin/recycle-detail', [AdminController::class, 'recycleDetail'])->name('admin.recycle-detail');
-    Route::post('/admin/recycle/{id}/assign', [AdminController::class, 'assignPenjahit'])->name('admin.recycle.assign');
-    Route::post('/admin/recycle/{id}/update-status', [AdminController::class, 'updateRecycleStatus'])->name('admin.recycle.update-status');
+        Route::get('/admin/recycle-detail', [AdminController::class, 'recycleDetail'])->name('admin.recycle-detail');
+        Route::post('/admin/recycle/{id}/assign', [AdminController::class, 'assignPenjahit'])->name('admin.recycle.assign');
+        Route::post('/admin/recycle/{id}/update-status', [AdminController::class, 'updateRecycleStatus'])->name('admin.recycle.update-status');
+    });
 
     // =====================================================
     // PENJUAL ROUTES

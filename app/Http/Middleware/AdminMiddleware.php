@@ -15,6 +15,14 @@ class AdminMiddleware
             return $next($request);
         }
 
+        // Jika request adalah API (expects JSON), kembalikan response JSON
+        if ($request->expectsJson() || $request->is('api/*')) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Anda tidak memiliki akses ke halaman ini.'
+            ], 403);
+        }
+
         // Jika bukan admin, redirect ke halaman login dengan pesan error
         return redirect()->route('login')->withErrors(['message' => 'Anda tidak memiliki akses ke halaman ini.']);
     }

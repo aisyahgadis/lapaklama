@@ -8,9 +8,14 @@
     <div class="total-pending-badge">
         Menunggu Penjahit: <strong>{{ $recycles->where('status', 'menunggu_assign')->count() }} Project</strong>
     </div>
-    <div class="header-section">
-        <h1 class="page-title">Kelola Daur Ulang</h1>
-        <p class="page-subtitle">Kelola dan tugaskan penjahit untuk project yang tersedia.</p>
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+        <div class="header-section">
+            <h1 class="page-title">Kelola Daur Ulang</h1>
+            <p class="page-subtitle">Kelola dan tugaskan penjahit untuk project yang tersedia.</p>
+        </div>
+        <a href="{{ route('admin.penjahit.create') }}" class="btn-setujui" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            <i class="bi bi-plus-circle"></i> Tambah Penjahit
+        </a>
     </div>
 
     @if(session('success'))
@@ -30,17 +35,17 @@
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="table-body">
                 @forelse($recycles as $recycle)
-                <tr>
+                <tr data-recycle-id="{{ $recycle->id }}">
                     <td>
                         <p class="project-name">Ide Daur Ulang</p>
                         <span class="project-deadline">Diajukan: {{ $recycle->created_at->format('d M Y') }}</span>
                     </td>
                     <td>{{ $recycle->kategori ? ucfirst($recycle->kategori) : 'Custom' }}</td>
                     <td>
-                        <span style="padding: 4px 10px; border-radius: 15px; font-size: 0.85rem; background-color: {{ $recycle->status === 'menunggu_assign' ? '#fef3c7' : ($recycle->status === 'assigned' ? '#dbeafe' : ($recycle->status === 'dikerjakan' ? '#fff3cd' : '#d1fae5')) }}; color: {{ $recycle->status === 'menunggu_assign' ? '#92400e' : ($recycle->status === 'assigned' ? '#1e40af' : ($recycle->status === 'dikerjakan' ? '#856404' : '#065f46')) }};">
-                            {{ $recycle->status === 'menunggu_assign' ? 'Menunggu Penjahit' : ($recycle->status === 'assigned' ? 'Sudah Ditugaskan' : ($recycle->status === 'dikerjakan' ? 'Sedang Dikerjakan' : 'Selesai')) }}
+                        <span style="padding: 4px 10px; border-radius: 15px; font-size: 0.85rem; background-color: {{ $recycle->status === 'menunggu_assign' ? '#fef3c7' : ($recycle->status === 'assigned' ? '#dbeafe' : ($recycle->status === 'dikerjakan' ? '#fff3cd' : '#d1fae5') }}; color: {{ $recycle->status === 'menunggu_assign' ? '#92400e' : ($recycle->status === 'assigned' ? '#1e40af' : ($recycle->status === 'dikerjakan' ? '#856404' : '#065f46') }};">
+                            {{ $recycle->status === 'menunggu_assign' ? 'Menunggu Penjahit' : ($recycle->status === 'assigned' ? 'Sudah Ditugaskan' : ($recycle->status === 'dikerjakan' ? 'Sedang Dikerjakan' : 'Selesai') }}
                         </span>
                     </td>
                     <td>
@@ -54,11 +59,8 @@
                         @if($recycle->status === 'menunggu_assign')
                             <form action="{{ route('admin.recycle.assign', $recycle->id) }}" method="POST" id="form-project-{{ $recycle->id }}" style="display: flex; gap: 10px; align-items: center;">
                                 @csrf
-                                <select name="penjahit_id" class="select-penjahit" required style="width: 180px;">
-                                    <option value="" selected disabled>-- Pilih Penjahit --</option>
-                                    @foreach($penjahits as $penjahit)
-                                        <option value="{{ $penjahit->id }}">{{ $penjahit->nama }}</option>
-                                    @endforeach
+                                <select name="penjahit_id" class="select-penjahit penjahit-select" required style="width: 180px;" data-recycle-id="{{ $recycle->id }}">
+                                    <option value="" selected disabled>-- Loading Penjahit --</option>
                                 </select>
                                 <button type="submit" class="btn-setujui">Tugaskan</button>
                             </form>
@@ -92,4 +94,34 @@
         </table>
     </div>
 </div>
+
+<script>
+// Load penjahit dari API saat halaman dimuat
+document.addEventListener('DOMContentLoaded', async function() {
+    try {
+        const response = await fetch('/api/penjahit');
+        const data = await response.json();
+        
+        if (data.success && data.data) {
+            const penjahits = data.data;
+            const selects = document.querySelectorAll('.penjahit-select');
+            
+            selects.forEach(select => {
+                // Bersihkan opsi lama
+                select.innerHTML = '<option value="" selected disabled>-- Pilih Penjahit --</option>';
+                
+                // Tambahkan opsi penjahit
+                penjahits.forEach(penjahit => {
+                    const option = document.createElement('option');
+                    option.value = penjahit.id;
+                    option.textContent = penjahit.nama;
+                    select.appendChild(option);
+                });
+            });
+        }
+    } catch (error) {
+        console.error('Gagal memuat data penjahit:', error);
+    }
+});
+</script>
 @endsection
