@@ -42,7 +42,7 @@ class AdminController extends Controller
             'status_penjual' => 'tidak_ada',
         ]);
 
-        return redirect()->route('admin.user')->with('success', 'Penjahit berhasil ditambahkan!');
+        return redirect()->route('admin.recycle-detail')->with('success', 'Penjahit berhasil ditambahkan!');
     }
     // Halaman Manajemen User
     public function users()
@@ -112,14 +112,25 @@ class AdminController extends Controller
     
     public function updateRecycleStatus(Request $request, $id)
     {
-        $request->validate([
-            'status' => 'required|in:assigned,dikerjakan,selesai'
-        ]);
+        try {
+            $request->validate([
+                'status' => 'required|in:assigned,dikerjakan,selesai'
+            ]);
 
-        $recycle = Recycle::findOrFail($id);
-        $recycle->status = $request->status;
-        $recycle->save();
+            $recycle = Recycle::findOrFail($id);
+            $recycle->status = $request->status;
+            $recycle->save();
 
-        return redirect()->back()->with('success', 'Status berhasil diperbarui!');
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json(['success' => true, 'message' => 'Status berhasil diperbarui!']);
+            }
+
+            return redirect()->back()->with('success', 'Status berhasil diperbarui!');
+        } catch (\Exception $e) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+            }
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }

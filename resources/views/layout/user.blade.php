@@ -130,27 +130,9 @@ input.value="";
         <!-- DROPDOWN CARD -->
         <div class="profile-dropdown" id="profileDropdown">
 
-            <a href="/profile">
+            <a href="{{ route('profile') }}">
                 <i class="bi bi-pencil-square"></i> Edit Profile
             </a>
-
-            @if(Auth::check() && Auth::user()->jenis === 'penjual' && Auth::user()->status_penjual === 'approved')
-                <a href="{{ route('main') }}">
-                    <i class="bi bi-shop"></i> Toko Saya
-                </a>
-            @endif
-
-            @if(Auth::check() && Auth::user()->jenis === 'penjahit')
-                <a href="{{ route('penjahit.dashboard') }}">
-                    <i class="bi bi-scissors"></i> Dashboard Penjahit
-                </a>
-            @endif
-
-            @if(Auth::check() && Auth::user()->jenis === 'admin')
-                <a href="{{ route('admin.dashboard') }}">
-                    <i class="bi bi-speedometer2"></i> Admin Panel
-                </a>
-            @endif
 
             <a href="{{ route('logout') }}">
                 <i class="bi bi-box-arrow-right"></i> Logout

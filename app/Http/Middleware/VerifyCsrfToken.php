@@ -12,6 +12,10 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        '/admin/recycle/*/update-status',
+        '/admin/recycle/*/assign',
+        '/admin/persetujuan/pilih',
+        '/recycle/store',
+        '/api/*'
     ];
 }

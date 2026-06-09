@@ -30,6 +30,23 @@
             <h2>Mulai Project Daur Ulangmu</h2>
             <p class="subtitle">Pilih kreasi populer atau tentukan sendiri ide daur ulang pakaianmu.</p>
 
+            @if ($errors->any())
+                <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                    <h5 style="margin: 0 0 10px 0;">Gagal mengirim form!</h5>
+                    <ul class="mb-0 ps-3">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if(session('success'))
+                <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <form action="{{ route('recycle.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 

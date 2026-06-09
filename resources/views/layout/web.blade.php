@@ -90,7 +90,6 @@ input.value="";
         <li><a href="{{ route('jual') }}">Jual</a></li>
         <li><a href="{{ route('penjual.product') }}">Produk</a></li>
         <li><a href="{{ route('penjual.orders') }}">History</a></li>
-        <li><a href="{{ route('beli') }}">Beli</a></li>
         <li><a href="{{ route('daurulang') }}">Recycle</a></li>
         <li><a href="{{ route('user-login.about') }}">About</a></li>
 

@@ -46,6 +46,10 @@ Route::middleware(['auth'])->group(function () {
     // --- LOGOUT ---
     Route::get('/sesi/logout', [SessionController::class, 'logout'])->name('logout');
 
+    // --- PROFILE ---
+    Route::get('/profile', [SessionController::class, 'editProfile'])->name('profile');
+    Route::put('/profile', [SessionController::class, 'updateProfile'])->name('profile.update');
+
     // =====================================================
     // ADMIN ROUTES
     // =====================================================

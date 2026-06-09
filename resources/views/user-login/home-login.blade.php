@@ -51,10 +51,10 @@
         </div>
 
         <div class="hero-gallery">
-            <div class="diamond"><img src="https://i.pinimg.com/1200x/6f/6f/7a/6f6f7aa22e7b00b9abeba24478a0a37e.jpg" alt="Fashion 1"></div>
-            <div class="diamond"><img src="https://i.pinimg.com/1200x/6f/6f/7a/6f6f7aa22e7b00b9abeba24478a0a37e.jpg" alt="Fashion 2"></div>
-            <div class="diamond"><img src="https://i.pinimg.com/1200x/6f/6f/7a/6f6f7aa22e7b00b9abeba24478a0a37e.jpg" alt="Fashion 3"></div>
-            <div class="diamond"><img src="https://i.pinimg.com/1200x/6f/6f/7a/6f6f7aa22e7b00b9abeba24478a0a37e.jpg" alt="Fashion 4"></div>
+            <div class="diamond"><img src="https://i.pinimg.com/1200x/fb/39/79/fb3979109e3949abb68bc0afe510ce45.jpg" alt="Fashion 1"></div>
+            <div class="diamond"><img src="https://i.pinimg.com/1200x/e2/5b/1a/e25b1aea77995078a6afaca5285dccad.jpg" alt="Fashion 2"></div>
+            <div class="diamond"><img src="https://i.pinimg.com/1200x/fb/39/79/fb3979109e3949abb68bc0afe510ce45.jpg" alt="Fashion 3"></div>
+            <div class="diamond"><img src="https://i.pinimg.com/1200x/e2/5b/1a/e25b1aea77995078a6afaca5285dccad.jpg" alt="Fashion 4"></div>
         </div>
     </div>
 </section>
@@ -170,9 +170,9 @@
                 </div>
             </div>
 
-            <div class="recycle-card">
+        <div class="recycle-card">
                 <div class="recycle-img-box">
-                    <img src="https://i.pinimg.com/736x/b1/eb/82/b1eb8227368bd1153138d7bb84cba72c.jpg" alt="Kemeja Patchwork">
+                    <img src="https://i.pinimg.com/736x/64/7e/a3/647ea37f4c9dc12d0523ac88b962aadf.jpg" alt="Kemeja Patchwork">
                 </div>
                 <div class="recycle-info">
                     <span class="recycle-tag">Kaos & Kemeja</span>
@@ -183,7 +183,7 @@
 
             <div class="recycle-card">
                 <div class="recycle-img-box">
-                    <img src="https://i.pinimg.com/736x/b1/eb/82/b1eb8227368bd1153138d7bb84cba72c.jpg" alt="Pouch Set">
+                    <img src="https://i.pinimg.com/736x/9b/fb/83/9bfb8393ef9f6f7d931b1921d2712e33.jpg" alt="Pouch Aksesoris">
                 </div>
                 <div class="recycle-info">
                     <span class="recycle-tag">Kain Perca</span>
@@ -194,7 +194,7 @@
 
             <div class="recycle-card">
                 <div class="recycle-img-box">
-                    <img src="https://i.pinimg.com/736x/b1/eb/82/b1eb8227368bd1153138d7bb84cba72c.jpg" alt="Bucket Hat">
+                    <img src="https://i.pinimg.com/736x/d1/f4/f5/d1f4f5cd382c92666c421fbff76ee573.jpg" alt="Bucket Hat">
                 </div>
                 <div class="recycle-info">
                     <span class="recycle-tag">Bahan Campuran</span>
@@ -202,28 +202,6 @@
                     <p>Topi dua sisi yang trendi, dibuat dari sisa bahan denim dan korduroi untuk gaya kasualmu.</p>
                 </div>
             </div>
-        </div>
-
-        <button class="slider-nav right">&#10095;</button>
-    </div>
-</section>
-
-<section class="action-section">
-    <h2 class="action-title">Ayo Coba Lapaklama Sekarang!</h2>
-    <div class="action-grid">
-        <div class="action-card">
-            <div class="icon-box">🛍️</div>
-            <h3>Beli Baju Berkualitas</h3>
-            <p>Temukan baju bekas kualitas premium dengan harga terjangkau. Cari, pilih, dan beli dengan mudah!</p>
-            <a href="{{ route('baju') }}" class="btn btn-outline btn-full">Belanja Sekarang</a>
-        </div>
-        
-        <div class="action-card">
-            <div class="icon-box">✂️</div>
-            <h3>Ubah Baju Lamamu</h3>
-            <p>Lapaklama membantu mengubah baju lamamu jadi lebih bernilai dengan sentuhan *upcycle* dari kreator kami.</p>
-            <a href="{{ route('daurulang') }}" class="btn btn-outline btn-full">Mulai Recycle</a>
-        </div>
     </div>
 </section>
 

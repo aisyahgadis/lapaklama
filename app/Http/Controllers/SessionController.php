@@ -152,4 +152,62 @@ class SessionController extends Controller
         $request->session()->regenerateToken();
         return redirect('/sesi/index')->with('success', 'Anda berhasil logout.');
     }
+
+    // HALAMAN EDIT PROFILE
+    public function editProfile()
+    {
+        $user = Auth::user();
+        return view('sesi.edit-profile', compact('user'));
+    }
+
+    // PROSES UPDATE PROFILE
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+        
+        // Validasi
+        $rules = [
+            'email' => 'required|email|unique:users,email,'.$user->id,
+        ];
+        
+        if ($request->filled('password')) {
+            $rules['password'] = 'min:6';
+        }
+        
+        if ($user->jenis === 'pembeli') {
+            $rules['nama'] = 'required|string|max:255';
+        } elseif ($user->jenis === 'penjual') {
+            $rules['nama_toko'] = 'required|string|max:255';
+            $rules['no_hp'] = 'required|numeric';
+            $rules['alamat_toko'] = 'required|string';
+        } elseif ($user->jenis === 'penjahit') {
+            $rules['nama'] = 'required|string|max:255';
+            $rules['no_hp'] = 'nullable|numeric';
+        }
+        
+        $request->validate($rules);
+
+        // Update data
+        $user->email = $request->email;
+        
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        if ($user->jenis === 'pembeli') {
+            $user->nama = $request->nama;
+        } elseif ($user->jenis === 'penjual') {
+            $user->nama = $request->nama_toko;
+            $user->nama_toko = $request->nama_toko;
+            $user->no_hp = $request->no_hp;
+            $user->alamat_toko = $request->alamat_toko;
+        } elseif ($user->jenis === 'penjahit') {
+            $user->nama = $request->nama;
+            $user->no_hp = $request->no_hp;
+        }
+
+        $user->save();
+
+        return back()->with('success', 'Profil berhasil diperbarui!');
+    }
 }
