@@ -10,8 +10,8 @@
         <h2>Ide Daur Ulang Dikirim!</h2>
         <p>Terima kasih sudah menjadi bagian dari gerakan ramah lingkungan bersama Lapak Lama. Ide kreatifmu sudah masuk ke dalam antrean review kami.</p>
         
-        <!-- Arahkan ke halaman history yang kita buat sebelumnya -->
-        <a href="{{ route('user.orders') }}" class="btn-to-tracking">
+        <!-- Arahkan ke halaman user tracking -->
+        <a href="{{ route('user.user-tracking') }}" class="btn-to-tracking">
             Pantau Progres Baju Saya <i class="bi bi-arrow-right ms-1"></i>
         </a>
     </div>

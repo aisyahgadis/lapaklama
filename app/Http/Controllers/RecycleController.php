@@ -51,11 +51,14 @@ class RecycleController extends Controller
         ]);
 
         // Redirect ke halaman sukses sesuai jenis user
-        // Gunakan method dari User model untuk cek apakah penjual yang approved
-        if ($user->isApprovedPenjual()) {
+        if ($user->isPembeli()) {
+            // User pembeli ke user-succes
+            return redirect()->route('user.user-succes')->with('success', 'Ide daur ulang berhasil dikirim!');
+        } elseif ($user->isApprovedPenjual()) {
+            // Penjual approved ke penjual.succes
             return redirect()->route('penjual.succes')->with('success', 'Ide daur ulang berhasil dikirim!');
         } else {
-            // Semua user lain ke user-succes (user pembeli, penjahit, admin, penjual pending)
+            // User lain ke user-succes
             return redirect()->route('user.user-succes')->with('success', 'Ide daur ulang berhasil dikirim!');
         }
     }
